@@ -1,30 +1,11 @@
-from selenium.common.exceptions import NoAlertPresentException
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from .locators import Locators
-
-
-class BasePage():
-    def __init__(self, browser, url, timeout=10):
+class BasePage:
+    def __init__(self, browser):
         self.browser = browser
-        self.url = url
-        self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(5)
 
-    def open(self):
-        self.browser.get(self.url)
+    def open(self, url):
+        return self.browser.get(url)
 
-    def is_element_present(self, how, what):
-        try:
-            self.browser.find_element(how, what)
-        except TimeoutException:
-            return False
-        return True
+    def find(self, args):
+        return self.browser.find_element(*args)
 
-    def is_not_element_present(self, how, what, timeout=4):
-        try:
-            WebDriverWait(self.browser, timeout). \
-                until(EC.presence_of_element_located((how, what)))
-        except TimeoutException:
-            return True
-        return False
