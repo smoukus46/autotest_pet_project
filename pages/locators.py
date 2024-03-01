@@ -25,6 +25,9 @@ class CheckBoxPageLocators:
 
 class RadioBtnPageLocators:
     RADIO_BTN_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Radio Button']")
+    YES_RADIO_BTN = (By.ID, "yesRadio")
+    IMPRESSIVE_RADIO_BTN = (By.ID, "impressiveRadio")
+    NO_RADIO_BTN = (By.ID, "noRadio")
 
 
 class WebTablesPageLocators:
@@ -88,6 +91,107 @@ class PracticeFormPageLocators:
     CURRENT_ADDRESS_INPUT = (By.ID, "currentAddress")
     STATE_INPUT = (By.ID, "state")
     CITY_INPUT = (By.ID, "city")
-    # STATE_SELECT = (By.ID, "")
-    # CITY_SELECT = (By.CSS_SELECTOR, "")
+    STATE_SELECT = (By.ID, "react-select-3-option-0")
+    CITY_SELECT = (By.ID, "react-select-4-option-1")
     SUBMIT_BTN = (By.ID, "submit")
+
+
+class BrowserWindowsPageLocators:
+    BROWSER_WINDOWS_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Browser Windows']")
+    NEW_TAB_BTN = (By.ID, "tabButton")
+    NEW_WINDOW_BTN = (By.ID, "windowButton")
+    NEW_WINDOW_MESSAGE = (By.ID, "messageWindowButton")
+
+
+class AlertsPageLocators:
+    ALERTS_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Alerts']")
+    ALERT_BTN = (By.ID, "alertButton")
+    TIMER_ALERT_BTN = (By.ID, "timerAlertButton")
+    CONFIRM_BTN = (By.ID, "confirmButton")
+    PROMPT_BTN = (By.ID, "promtButton")
+
+
+class ModalDialogsPageLocators:
+    FRAMES_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Frames']")
+    NESTED_FRAMES_ITEM = (By.XPATH, "//li[@id='item-3']/span[text()='Nested Frames']")
+    MODAL_DIALOGS_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Modal Dialogs']")
+    SMALL_MODAL_BTN = (By.ID, "showSmallModal")
+    LARGE_MODAL_BTN = (By.ID, "showLargeModal")
+    SMALL_MODAL = (By.CLASS_NAME, "modal-content")
+    CLOSE_SMALL_MODAL_BTN = (By.ID, "closeSmallModal")
+    LARGE_MODAL = (By.CLASS_NAME, "modal-content")
+    CLOSE_LARGE_MODAL_BTN = (By.ID, "closeLargeModal")
+
+
+class AccordianPageLocators:
+    ACCORDIAN_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Accordian']")
+    FIRST_SECTION_HEADING = (By.ID, "section1Heading")
+    FIRST_SECTION_CONTENT = (By.CSS_SELECTOR, "#section1Content p")
+    SECOND_SECTION_HEADING = (By.ID, "section2Heading")
+    SECOND_SECTION_CONTENT = (By.CSS_SELECTOR, "#section2Content:first-child")
+    THIRD_SECTION_HEADING = (By.ID, "section3Heading")
+    THIRD_SECTION_CONTENT = (By.CSS_SELECTOR, "#section3Content p")
+
+
+class AutoCompletePageLocators:
+    AUTO_COMPLETE_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Auto Complete']")
+    MULTIPLE_INPUT = (By.ID, "autoCompleteMultipleInput")
+    SINGLE_INPUT = (By.ID, "autoCompleteSingleInput")
+    RED_COLOR_MULTIPLE_SELECTOR = (By.ID, "react-select-4-option-0")
+    GREEN_COLOR_MULTIPLE_SELECTOR = (By.ID, "react-select-4-option-1")
+    PURPLE_COLOR_MULTIPLE_SELECTOR = (By.ID, "react-select-4-option-2")
+    INDIGO_COLOR_SINGLE_SELECTOR = (By.ID, "react-select-3-option-1")
+    MAGENTA_COLOR_SINGLE_SELECTOR = (By.ID, "react-select-3-option-2")
+    # MULTIPLE_AUTO_COMPLETE_REMOVE_BTN = ()
+    MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME,
+                                 "auto-complete__indicator auto-complete__clear-indicator css-tlfecz-indicatorContainer")
+
+
+class DatePickerPageLocators:
+    DATE_PICKER_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Date Picker']")
+    SELECT_DATE_INPUT = (By.ID, "datePickerMonthYearInput")
+    SELECT_DATE_MONTH_INPUT = (By.CLASS_NAME, "react-datepicker__month-select")
+    SELECT_DATE_YEAR_INPUT = (By.CLASS_NAME, "react-datepicker__year-select")
+    SELECT_DATE_DAY = (By.CLASS_NAME, "react-datepicker__day react-datepicker__day--018")
+    DATE_TIME_INPUT = (By.ID, "dateAndTimePickerInput")
+    DATE_TIME_MONTH_INPUT = (By.CLASS_NAME, "react-datepicker__month-read-view--selected-month")
+    DATE_TIME_YEAR_INPUT = (By.CLASS_NAME, "react-datepicker__year-read-view--selected-year")
+    DATE_TIME_DAY = (By.CLASS_NAME, "react-datepicker__day react-datepicker__day--005")
+    DATE_TIME_SELECTOR = (By.XPATH, "//ul[@class='react-datepicker__time-list']/li[text()='17:45']")
+
+
+class SliderPageLocators:
+    SLIDER_ITEM = (By.XPATH, "//li[@id='item-3']/span[text()='Slider']")
+    # SLIDER =
+    TOOLTIP = (By.CLASS_NAME, "range-slider__tooltip__label")
+    SLIDER_VALUE_INPUT = (By.ID, "sliderValue")
+
+
+class ProgressBarPageLocators:
+    PROGRESS_BAR_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Progress Bar']")
+    START_STOP_BTN = (By.ID, "startStopButton")
+    RESET_BTN = (By.ID, "resetButton")
+    PROGRESS_BAR = (By.CLASS_NAME, "progress-bar bg-info")
+
+
+class TabsPageLocators:
+    TABS_ITEM = (By.XPATH, "//li[@id='item-5']/span[text()='Tabs']")
+    TAB_WHAT_BTN = (By.ID, "demo-tab-what")
+    TAB_WHAT_CONTENT = (By.CSS_SELECTOR, "#demo-tabpane-what .mt-3")
+    TAB_ORIGIN_BTN = (By.ID, "demo-tab-origin")
+    TAB_ORIGIN_CONTENT = (By.CSS_SELECTOR, "#demo-tabpane-origin .mt-3")
+    TAB_USE_BTN = (By.ID, "demo-tab-use")
+    TAB_USE_CONTENT = (By.CSS_SELECTOR, "#demo-tabpane-use .mt-3")
+    TAB_MORE_BTN = (By.ID, "demo-tab-more")
+
+
+class ToolTipsPageLocators:
+    TOOL_TIPS_ITEM = (By.XPATH, "//li[@id='item-6']/span[text()='Tool Tips']")
+    HOVER_BTN = (By.ID, "toolTipButton")
+    BTN_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
+    HOVER_INPUT = (By.ID, "texFieldToolTopContainer")
+    INPUT_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
+    # HOVER_WORD = ()
+    WORD_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
+    # HOVER NUM = ()
+    NUM_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
