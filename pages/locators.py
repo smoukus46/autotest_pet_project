@@ -193,5 +193,5 @@ class ToolTipsPageLocators:
     INPUT_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
     # HOVER_WORD = ()
     WORD_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
-    # HOVER NUM = ()
+    #HOVER NUM = ()
     NUM_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
