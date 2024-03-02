@@ -142,7 +142,7 @@ class AutoCompletePageLocators:
     PURPLE_COLOR_MULTIPLE_SELECTOR = (By.ID, "react-select-4-option-2")
     INDIGO_COLOR_SINGLE_SELECTOR = (By.ID, "react-select-3-option-1")
     MAGENTA_COLOR_SINGLE_SELECTOR = (By.ID, "react-select-3-option-2")
-    # MULTIPLE_AUTO_COMPLETE_REMOVE_BTN = ()
+    MULTIPLE_AUTO_COMPLETE_REMOVE_BTN = (By.XPATH, "(//div[@class='css-xb97g8 auto-complete__multi-value__remove'])[1]")
     MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME,
                                  "auto-complete__indicator auto-complete__clear-indicator css-tlfecz-indicatorContainer")
 
@@ -191,7 +191,75 @@ class ToolTipsPageLocators:
     BTN_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
     HOVER_INPUT = (By.ID, "texFieldToolTopContainer")
     INPUT_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
-    # HOVER_WORD = ()
+    HOVER_WORD = (By.XPATH, "(//div[@id='texToolTopContainer'])/a[1]")
     WORD_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
-    #HOVER NUM = ()
+    HOVER_NUM = (By.XPATH, "(//div[@id='texToolTopContainer'])/a[2]")
     NUM_TOOL_TIP = (By.CLASS_NAME, "tooltip-inner")
+
+
+class MenuPageLocators:
+    MENU_ITEM = (By.XPATH, "//li[@id='item-7']/span[text()='Menu']")
+    MAIN_MENU_ITEM_ONE = (By.XPATH, "//li/a[text()='Main Item 1']")
+    MAIN_MENU_ITEM_TWO = (By.XPATH, "//li/a[text()='Main Item 2']")
+    SUB_ITEM_ONE = (By.XPATH, "(//li/ul/li/a[text()='Sub Item'])[1]")
+    SUB_ITEM_TWO = (By.XPATH, "(//li/ul/li/a[text()='Sub Item'])[2]")
+    SUB_SUB_LIST = (By.XPATH, "//li/ul/li/a[text()='SUB SUB LIST »']")
+    SUB_SUB_ITEM_ONE = (By.XPATH, "//li/ul/li/ul/li/a[text()='Sub Sub Item 1']")
+    SUB_SUB_ITEM_TWO = (By.XPATH, "//li/ul/li/ul/li/a[text()='Sub Sub Item 2']")
+    MAIN_MENU_ITEM_THREE = (By.XPATH, "//li/a[text()='Main Item 3']")
+
+
+class SelectMenuPageLocators:
+    SELECT_MENU_ITEM = (By.XPATH, "//li[@id='item-8']/span[text()='Select Menu']")
+    SELECT_VALUE_MENU = (By.ID, "react-select-5-input")
+    VALUE_OF_SELECT_MENU_ONE = (By.ID, "react-select-5-option-3")
+    VALUE_OF_SELECT_MENU_TWO = (By.ID, "react-select-5-option-0-0")
+    SELECT_ONE_MENU = (By.ID, "react-select-6-input")
+    VALUE_OF_SELECT_ONE_MENU = (By.ID, "react-select-6-option-0-1")
+    OLD_STYLE_SELECT_MENU = (By.ID, "oldSelectMenu")
+    MULTISELECT_DROPDOWN_MENU = (By.ID, "react-select-7-input")
+    RED_COLOR_OF_MULTISELECT_DROPDOWN_MENU = (By.ID, "react-select-4-option-3")
+    GREEN_COLOR_OF_MULTISELECT_DROPDOWN_MENU = (By.ID, "react-select-4-option-0")
+    BLUE_COLOR_OF_MULTISELECT_DROPDOWN_MENU = (By.ID, "react-select-4-option-1")
+    INPUT_REMOVE_ITEM = (By.XPATH, "(//div[@class=' css-1wy0on6'])[3]/div[1]")
+    VALUE_REMOVE_ITEM = (By.XPATH, "((//div[@class='css-1rhbuit-multiValue'])[1]/div[@class='css-xb97g8']")
+
+
+class SortablePageLocators:
+    SORTABLE_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Sortable']")
+    LIST_ITEM_ONE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='One'])[1]")
+    LIST_ITEM_TWO = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Two'])[1]")
+    LIST_ITEM_THREE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Three'])[1]")
+    LIST_ITEM_FOUR = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Four'])[1]")
+    LIST_ITEM_FIVE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Five'])[1]")
+    LIST_ITEM_SIX = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Six'])[1]")
+    GRID_TAB = (By.ID, "demo-tab-grid")
+    GRID_ITEM_ONE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='One'])[2]")
+    GRID_ITEM_TWO = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Two'])[2]")
+    GRID_ITEM_THREE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Three'])[2]")
+    GRID_ITEM_FOUR = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Four'])[2]")
+    GRID_ITEM_FIVE = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Five'])[2]")
+    GRID_ITEM_SIX = (By.XPATH, "(//div[@class='list-group-item list-group-item-action'][text()='Six'])[2]")
+
+
+class SelectablePageLocators:
+    SELECTABLE_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Selectable']")
+    LIST_FIRST_ITEM = (By.XPATH, "//li[@class='mt-2 list-group-item list-group-item-action'][text()='Cras justo odio']")
+    LIST_SECOND_ITEM = (By.XPATH,
+                     "//li[@class='mt-2 list-group-item list-group-item-action'][text()='Dapibus ac facilisis in']")
+    LIST_THIRD_ITEM = (By.XPATH, "//li[@class='mt-2 list-group-item list-group-item-action'][text()='Morbi leo risus']")
+    LIST_FORTH_ITEM = (By.XPATH,
+                      "//li[@class='mt-2 list-group-item list-group-item-action'][text()='Porta ac consectetur ac']")
+    LIST_FIRST_ITEM_IS_SELECTED = (By.XPATH,
+                                   "//li[@class='mt-2 list-group-item active list-group-item-action'][text()='Cras justo odio']")
+    LIST_TWO_ITEM_IS_SELECTED = (By.XPATH,
+                     "//li[@class='mt-2 list-group-item active list-group-item-action'][text()='Dapibus ac facilisis in']")
+    GRID_TAB = (By.ID, "demo-tab-grid")
+    GRID_FIRST_ITEM = (By.XPATH, "//li[@class='list-group-item list-group-item-action'][text()='One']")
+    GRID_SECOND_ITEM = (By.XPATH, "//li[@class='list-group-item list-group-item-action'][text()='Two']")
+    GRID_THIRD_ITEM = (By.XPATH, "//li[@class='list-group-item list-group-item-action'][text()='Three']")
+    GRID_FIRST_ITEM_IS_SELECTED = (By.XPATH,
+                                   "//li[@class='list-group-item active list-group-item-action'][text()='One']")
+    GRID_THIRD_ITEM_IS_SELECTED = (By.XPATH,
+                                   "//li[@class='list-group-item active list-group-item-action'][text()='Three']")
+
