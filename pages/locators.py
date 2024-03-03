@@ -263,3 +263,67 @@ class SelectablePageLocators:
     GRID_THIRD_ITEM_IS_SELECTED = (By.XPATH,
                                    "//li[@class='list-group-item active list-group-item-action'][text()='Three']")
 
+
+class ResizablePageLocators:
+    RESIZABLE_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Resizable']")
+    RESIZABLE_BOX = (By.ID, "resizableBoxWithRestriction")
+    RESIZABLE_CONTAINER = (By.ID, "resizable")
+
+
+class DroppablePageLocators:
+    DROPPABLE_ITEM = (By.XPATH, "//li[@id='item-3']/span[text()='Droppable']")
+    SIMPLE_DRAGGABLE_ITEM = (By.ID, "draggable")
+    SIMPLE_DROPPABLE_ITEM = (By.CSS_SELECTOR, "#simpleDropContainer > #droppable")
+    ACCEPT_TAB = (By.ID, "droppableExample-tab-accept")
+    ACCEPT_ITEM = (By.ID, "acceptable")
+    NOT_ACCEPT_ITEM = (By.ID, "notAcceptable")
+    ACCEPT_DROPPABLE_ITEM = (By.CSS_SELECTOR, "#acceptDropContainer > #droppable")
+    PREVENT_PROPOGATION_TAB = (By.ID, "droppableExample-tab-preventPropogation")
+    DRAG_BOX_ITEM = (By.ID, "dragBox")
+    NOT_GREEDY_DROP_BOX = (By.ID, "notGreedyDropBox")
+    NOT_GREEDY_INNER_DROP_BOX = (By.ID, "notGreedyInnerDropBox")
+    GREEDY_DROP_BOX = (By.ID, "greedyDropBox")
+    GREEDY_INNER_DROP_BOX = (By.ID, "greedyDropBoxInner")
+    REVERT_DRAGGABLE_TAB = (By.ID, "droppableExample-tab-revertable")
+    REVERTABLE_ITEM = (By.ID, "revertable")
+    NOT_REVERTABLE_ITEM = (By.ID, "notRevertable")
+    REVERTABLE_DROPPABLE_ITEM = (By.CSS_SELECTOR, "#revertableDropContainer > #droppable")
+
+
+class DraggablePageLocators:
+    DRAGGABLE_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Dragabble']")
+    SIMPLE_DRAGGABLE_BOX = (By.ID, "dragBox")
+    AXIS_RESTRICTED_TAB = (By.ID, "draggableExample-tab-axisRestriction")
+    RESTRICTED_ONLY_X_BOX = (By.ID, "restrictedX")
+    RESTRICTED_ONLY_Y_BOX = (By.ID, "restrictedY")
+    CONTAINER_RESTRICTED_TAB = (By.ID, "draggableExample-tab-containerRestriction")
+    WRAP_CONTAINER = (By.ID, "containmentWrapper")
+    BOX_IN_CONTAINER = (By.CLASS_NAME, "draggable ui-widget-content ui-draggable ui-draggable-handle")
+    WRAP_TEXT = (By.CLASS_NAME, "draggable ui-widget-content m-3")
+    TEXT_IN_CONTAINER = (By.CLASS_NAME, "ui-widget-header ui-draggable ui-draggable-handle")
+    CURSOR_STYLE_TAB = (By.ID, "draggableExample-tab-cursorStyle")
+    CURSOR_IN_CENTER_BOX = (By.ID, "cursorCenter")
+    CURSOR_IN_TOP_LEFT_BOX = (By.ID, "cursorTopLeft")
+    CURSOR_IN_BOTTOM_BOX = (By.ID, "cursorBottom")
+
+
+class LoginPageLocators:
+    LOGIN_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Login']")
+    BOOK_STORE_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Book Store']")
+    PROFILE_ITEM = (By.XPATH, "//li[@id='item-3']/span[text()='Profile']")
+    BOOK_STORE_API_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Book Store API']")
+    USER_NAME_INPUT = (By.ID, "userName")
+    PASSWORD_INPUT = (By.ID, "password")
+    LOGIN_BTN = (By.ID, "login")
+    NEW_USER_BTN = (By.ID, "newUser")
+
+
+class RegisterPageLocators:
+    FIRST_NAME_INPUT = (By.ID, "firstname")
+    LAST_NAME_INPUT = (By.ID, "lastname")
+    USER_NAME_INPUT = (By.ID, "userName")
+    PASSWORD_INPUT = (By.ID, "password")
+    CAPTCHA_CHECKBOX = (By.ID, "recaptcha-anchor")
+    REGISTER_BTN = (By.ID, "register")
+    LOGOUT_BTN = (By.XPATH, "//button[text()='Log out']")
+    
