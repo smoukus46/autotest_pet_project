@@ -25,13 +25,17 @@ class TextBoxPageLocators:
 
 class CheckBoxPageLocators:
     CHECKBOX_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Check Box']")
+    EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-expand-all")
+    COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-collapse-all")
+    HOME_EXPAND_CLOSE = (By.CLASS_NAME, "rct-collapse rct-collapse-btn")
 
 
 class RadioBtnPageLocators:
     RADIO_BTN_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Radio Button']")
     YES_RADIO_BTN = (By.ID, "yesRadio")
     IMPRESSIVE_RADIO_BTN = (By.ID, "impressiveRadio")
-    NO_RADIO_BTN = (By.ID, "noRadio")
+    NO_RADIO_BTN = (By.CLASS_NAME, "custom-control-input disabled")
+    RESULT_TEXT = (By.CLASS_NAME, "text-success")
 
 
 class WebTablesPageLocators:

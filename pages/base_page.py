@@ -37,3 +37,8 @@ class BasePage:
 
     def fill_input(self, element_locator, sending_text):
         self.find(element_locator).send_keys(sending_text)
+
+    def click_menu_elements_button(self):
+        self.button_click(MainPageLocators.ELEMENTS_PAGE)
+
+

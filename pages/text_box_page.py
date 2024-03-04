@@ -10,9 +10,6 @@ class TextBoxPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
-    def click_menu_element_button(self):
-        self.button_click(MainPageLocators.ELEMENTS_PAGE)
-
     def inputs_is_displayed(self):
         return self.items_is_displayed(input_items)
 

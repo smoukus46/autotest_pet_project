@@ -7,7 +7,7 @@ from .pages.locators import *
 def test_fill_forms_on_text_box_page(browser):
     text_box_page = TextBoxPage(browser)
     text_box_page.open_main_page()
-    text_box_page.click_menu_element_button()
+    text_box_page.click_menu_elements_button()
     text_box_page.elements_menu_items_is_displayed()
     text_box_page.inputs_is_displayed()
     text_box_page.full_name_input_click()
@@ -23,4 +23,3 @@ def test_fill_forms_on_text_box_page(browser):
     assert 'Artem.Alenin@test.ru' == text_box_page.find(TextBoxPageLocators.EMAIL_OUTPUT).text()
     assert 'City of Kursk' == text_box_page.find(TextBoxPageLocators.CURRENT_ADDRESS_OUTPUT).text()
     assert 'Kosinovo village' == text_box_page.find(TextBoxPageLocators.PERMANENT_ADDRESS_OUTPUT).text()
-    
