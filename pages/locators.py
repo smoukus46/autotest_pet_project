@@ -17,6 +17,10 @@ class TextBoxPageLocators:
     CURRENT_ADDRESS_INPUT = (By.ID, "currentAddress")
     PERMANENT_ADDRESS_INPUT = (By.ID, "permanentAddress")
     SUBMIT_BTN = (By.ID, "submit")
+    NAME_OUTPUT = (By.ID, "name")
+    EMAIL_OUTPUT = (By.ID, "email")
+    CURRENT_ADDRESS_OUTPUT = (By.ID, "currentAddress")
+    PERMANENT_ADDRESS_OUTPUT = (By.ID, "permanentAddress")
 
 
 class CheckBoxPageLocators:
