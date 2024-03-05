@@ -1,10 +1,16 @@
 from .locators import *
+from selenium.webdriver import ActionChains
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
 
 menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_ITEM,
-                  RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
-                  ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
-                  BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
-                  DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
+              RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
+              ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
+              BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
+              DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+action = ActionChains(driver)
 
 
 class BasePage:
@@ -41,4 +47,8 @@ class BasePage:
     def click_menu_elements_button(self):
         self.button_click(MainPageLocators.ELEMENTS_PAGE)
 
+    def button_double_click(self):
+        action.double_click(ButtonsPageLocators.DOUBLE_CLICK_BTN).perform()
 
+    def button_right_click(self):
+        action.context_click(ButtonsPageLocators.RIGHT_CLICK_BTN).perform()

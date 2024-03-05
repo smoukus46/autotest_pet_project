@@ -14,3 +14,6 @@ class RadioButtonPage(BasePage):
 
     def no_button_is_displayed(self):
         return self.is_element_displayed(RadioBtnPageLocators.NO_RADIO_BTN)
+
+    def open_radio_button_tab(self):
+        self.button_click(RadioBtnPageLocators.RADIO_BTN_ITEM)

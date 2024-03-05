@@ -47,6 +47,9 @@ class ButtonsPageLocators:
     DOUBLE_CLICK_BTN = (By.ID, "doubleClickBtn")
     RIGHT_CLICK_BTN = (By.ID, "rightClickBtn")
     CLICK_ME_BTN = (By.ID, "9ksW1")
+    DOUBLE_CLICK_MESSAGE = (By.ID, "doubleClickMessage")
+    RIGHT_CLICK_MESSAGE = (By.ID, "rightClickMessage")
+    DYNAMIC_CLICK_MESSAGE = (By.ID, "dynamicClickMessage")
 
 
 class LinksPageLocators:

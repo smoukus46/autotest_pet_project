@@ -5,6 +5,7 @@ from .pages.locators import *
 
 @pytestrail.case('C7')
 def test_fill_forms_on_text_box_page(browser):
+
     text_box_page = TextBoxPage(browser)
     text_box_page.open_main_page()
     text_box_page.click_menu_elements_button()
