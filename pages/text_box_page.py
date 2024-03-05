@@ -13,26 +13,17 @@ class TextBoxPage(BasePage):
     def inputs_is_displayed(self):
         return self.items_is_displayed(input_items)
 
-    def full_name_input_click(self):
-        self.find(TextBoxPageLocators.NAME_INPUT).click()
+    def open_text_box_tab(self):
+        self.button_click(TextBoxPageLocators.TEXT_BOX_ITEM)
 
     def fill_name_input(self):
         self.fill_input(TextBoxPageLocators.NAME_INPUT, 'Artem.Alenin')
 
-    def email_input_click(self):
-        self.find(TextBoxPageLocators.EMAIL_INPUT).click()
-
     def fill_email_input(self):
         self.fill_input(TextBoxPageLocators.EMAIL_INPUT, 'Artem.Alenin@test.ru')
 
-    def current_address_input_click(self):
-        self.find(TextBoxPageLocators.CURRENT_ADDRESS_INPUT).click()
-
     def fill_current_address(self):
         self.fill_input(TextBoxPageLocators.CURRENT_ADDRESS_INPUT, 'City of Kursk')
-
-    def permanent_address_input_click(self):
-        self.find(TextBoxPageLocators.PERMANENT_ADDRESS_INPUT).click()
 
     def fill_permanent_address(self):
         self.fill_input(TextBoxPageLocators.PERMANENT_ADDRESS_INPUT, 'Kosinovo village')
