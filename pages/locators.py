@@ -95,6 +95,8 @@ class PracticeFormPageLocators:
     DATEPICKER_DAY = (By.CLASS_NAME, "react-datepicker__day react-datepicker__day--025")
     SUBJECT_INPUT = (By.CLASS_NAME,
                      "subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3")
+    SUBJECT_CHEMISTRY_ITEM = (By.ID, "react-select-2-option-1")
+    SUBJECT_MATHS_ITEM = (By.ID, "react-select-2-option-0")
     HOBBIES_SPORTS_CHECKBOX = (By.ID, "hobbies-checkbox-1")
     HOBBIES_READING_CHECKBOX = (By.ID, "hobbies-checkbox-2")
     HOBBIES_MUSIC_CHECKBOX = (By.ID, "hobbies-checkbox-3")
@@ -102,9 +104,21 @@ class PracticeFormPageLocators:
     CURRENT_ADDRESS_INPUT = (By.ID, "currentAddress")
     STATE_INPUT = (By.ID, "state")
     CITY_INPUT = (By.ID, "city")
-    STATE_SELECT = (By.ID, "react-select-3-option-0")
-    CITY_SELECT = (By.ID, "react-select-4-option-1")
+    STATE_NCR_SELECT = (By.ID, "react-select-3-option-0")
+    CITY_GURGAON_SELECT = (By.ID, "react-select-4-option-1")
     SUBMIT_BTN = (By.ID, "submit")
+    CLOSE_BTN = (By.ID, "closeLargeModal")
+    INFO_ABOUT_STUDENT_FORM = (By.CLASS_NAME, "modal-content")
+    RESULT_STUDENT_NAME = (By.XPATH, "//tbody/tr[1]/td[2]")
+    RESULT_EMAIL = (By.XPATH, "//tbody/tr[2]/td[2]")
+    RESULT_GENDER = (By.XPATH, "//tbody/tr[3]/td[2]")
+    RESULT_PHONE = (By.XPATH, "//tbody/tr[4]/td[2]")
+    RESULT_DATE = (By.XPATH, "//tbody/tr[5]/td[2]")
+    RESULT_SUBJECTS = (By.XPATH, "//tbody/tr[6]/td[2]")
+    RESULT_HOBBIES = (By.XPATH, "//tbody/tr[7]/td[2]")
+    RESULT_PICTURE = (By.XPATH, "//tbody/tr[8]/td[2]")
+    RESULT_ADDRESS = (By.XPATH, "//tbody/tr[9]/td[2]")
+    RESULT_STATE_AND_CITY = (By.XPATH, "//tbody/tr[10]/td[2]")
 
 
 class BrowserWindowsPageLocators:

@@ -1,5 +1,6 @@
 from .locators import *
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.ui import Select
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -28,8 +29,11 @@ class BasePage:
     def find(self, args):
         return self.browser.find_element(*args)
 
-    def is_element_displayed(self, selector):
-        return self.find(selector).is_displayed()
+    def is_element_displayed(self, locator):
+        return self.find(locator).is_displayed()
+
+    def element_is_not_displayed(self, locator):
+        return self.find(locator).is_not_displayed()
 
     def items_is_displayed(self, items):
         for item in items:
@@ -52,3 +56,7 @@ class BasePage:
 
     def button_right_click(self):
         action.context_click(ButtonsPageLocators.RIGHT_CLICK_BTN).perform()
+
+    def fill_selector_by_value(self, locator, value):
+        select = Select(self.browser.find(locator))
+        select.select_by_value(value)

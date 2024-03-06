@@ -18,7 +18,7 @@ def test_fill_forms_on_text_box_page(browser):
     text_box_page.fill_current_address()
     text_box_page.fill_permanent_address()
     text_box_page.click_submit_button()
-    assert 'Artem.Alenin' == text_box_page.find(TextBoxPageLocators.NAME_OUTPUT).text()
-    assert 'Artem.Alenin@test.ru' == text_box_page.find(TextBoxPageLocators.EMAIL_OUTPUT).text()
-    assert 'City of Kursk' == text_box_page.find(TextBoxPageLocators.CURRENT_ADDRESS_OUTPUT).text()
-    assert 'Kosinovo village' == text_box_page.find(TextBoxPageLocators.PERMANENT_ADDRESS_OUTPUT).text()
+    assert 'Artem.Alenin' == text_box_page.find(TextBoxPageLocators.NAME_OUTPUT).text
+    assert 'Artem.Alenin@test.ru' == text_box_page.find(TextBoxPageLocators.EMAIL_OUTPUT).text
+    assert 'City of Kursk' == text_box_page.find(TextBoxPageLocators.CURRENT_ADDRESS_OUTPUT).text
+    assert 'Kosinovo village' == text_box_page.find(TextBoxPageLocators.PERMANENT_ADDRESS_OUTPUT).text
