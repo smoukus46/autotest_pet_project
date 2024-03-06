@@ -73,6 +73,7 @@ class UploadAndDownloadPageLocators:
     UPLOAD_AND_DOWNLOAD_ITEM = (By.XPATH, "//li[@id='item-7']/span[text()='Upload and Download']")
     DOWNLOAD_BTN = (By.ID, "downloadButton")
     UPLOAD_BTN = (By.ID, "uploadFile")
+    UPLOAD_FILE_PATH = (By.ID, "uploadedFilePath")
 
 
 class DynamicPropertiesPageLocators:
