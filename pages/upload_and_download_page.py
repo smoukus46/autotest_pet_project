@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import *
+import os
 
 
 class UploadAndDownloadPage(BasePage):
@@ -18,3 +19,7 @@ class UploadAndDownloadPage(BasePage):
 
     def download_picture(self):
         self.button_click(UploadAndDownloadPageLocators.DOWNLOAD_BTN)
+
+    def check_download_file(self):
+        file_path = 'D:/1.png'
+        assert os.path.exists(file_path), "Файл не был скачан"

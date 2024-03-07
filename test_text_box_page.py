@@ -1,5 +1,3 @@
-import time
-
 from .pages.text_box_page import TextBoxPage
 from pytest_testrail.plugin import pytestrail
 from .pages.locators import *
