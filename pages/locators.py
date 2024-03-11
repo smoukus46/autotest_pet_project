@@ -28,6 +28,13 @@ class CheckBoxPageLocators:
     EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-expand-all")
     COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-collapse-all")
     HOME_EXPAND_CLOSE = (By.CLASS_NAME, "rct-collapse rct-collapse-btn")
+    EXPAND_HOME_BTN = (By.XPATH, "//li[@class='rct-node rct-node-parent rct-node-collapsed']//button")
+    EXPAND_DESKTOP_BTN = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/span/button")
+    DESKTOP_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Desktop']")
+    DOCUMENTS_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Documents']")
+    DOWNLOADS_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Downloads']")
+    NOTES_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Notes']")
+    COMMANDS_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Commands']")
 
 
 class RadioBtnPageLocators:
@@ -40,6 +47,26 @@ class RadioBtnPageLocators:
 
 class WebTablesPageLocators:
     WEB_TABLES_ITEM = (By.XPATH, "//li[@id='item-3']/span[text()='Web Tables']")
+    ADD_BTN = (By.ID, "addNewRecordButton")
+    SEARCH_BTN = (By.CLASS_NAME, "input-group-append")
+    SEARCH_INPUT = (By.ID, "searchBox")
+    EDIT_BTN_ONE = (By.ID, "edit-record-1")
+    DELETE_BTN_ONE = (By.ID, "delete-record-1")
+    EDIT_BTN_TWO = (By.ID, "edit-record-2")
+    DELETE_BTN_TWO = (By.ID, "delete-record-2")
+    EDIT_BTN_THREE = (By.ID, "edit-record-3")
+    DELETE_BTN_THREE = (By.ID, "delete-record-3")
+    NEXT_BTN = (By.CLASS_NAME, "-next")
+    PREVIOUS_BTN = (By.CLASS_NAME, "-previous")
+    ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")
+    # REGISTRATION_FORM
+    FIRST_NAME_INPUT = (By.ID, "firstName")
+    LAST_NAME_INPUT = (By.ID, "lastName")
+    EMAIL_INPUT = (By.ID, "userEmail")
+    AGE_INPUT = (By.ID, "age")
+    SALARY_INPUT = (By.ID, "salary")
+    DEPARTMENT_INPUT = (By.ID, "department")
+    SUBMIT_BTN = (By.ID, "submit")
 
 
 class ButtonsPageLocators:
