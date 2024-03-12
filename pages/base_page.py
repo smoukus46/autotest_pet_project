@@ -39,6 +39,10 @@ class BasePage:
         for item in items:
             return self.is_element_displayed(item)
 
+    def items_is_not_displayed(self, items):
+        for item in items:
+            return self.element_is_not_displayed(item)
+
     def button_click(self, button):
         self.find(button).click()
 

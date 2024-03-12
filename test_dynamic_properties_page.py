@@ -1,11 +1,11 @@
 import time
-from .pages.dynamic_properties import DynamicProperties
+from .pages.dynamic_properties import DynamicPropertiesPage
 from pytest_testrail.plugin import pytestrail
 
 
 @pytestrail.case('C37')
 def check_dynamic_properties(browser):
-    dynamic_properties_page = DynamicProperties(browser)
+    dynamic_properties_page = DynamicPropertiesPage(browser)
     dynamic_properties_page.open_main_page()
     dynamic_properties_page.click_menu_elements_button()
     dynamic_properties_page.elements_menu_items_is_displayed()

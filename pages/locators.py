@@ -27,7 +27,6 @@ class CheckBoxPageLocators:
     CHECKBOX_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Check Box']")
     EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-expand-all")
     COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-collapse-all")
-    HOME_EXPAND_CLOSE = (By.CLASS_NAME, "rct-collapse rct-collapse-btn")
     EXPAND_HOME_BTN = (By.XPATH, "//li[@class='rct-node rct-node-parent rct-node-collapsed']//button")
     EXPAND_DESKTOP_BTN = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/span/button")
     DESKTOP_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Desktop']")
@@ -35,6 +34,12 @@ class CheckBoxPageLocators:
     DOWNLOADS_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Downloads']")
     NOTES_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Notes']")
     COMMANDS_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Commands']")
+    VEU_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Veu']")
+    GENERAL_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='General']")
+    EXCEL_FILE_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Excel File.doc']")
+    NOTES_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/ol/li[1]/span/label/span[1]")
+    HOME_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/span/label/span[1]")
+    RESULT_BOX = (By.ID, "result")
 
 
 class RadioBtnPageLocators:

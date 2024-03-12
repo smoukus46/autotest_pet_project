@@ -2,7 +2,7 @@ from .base_page import BasePage
 from .locators import *
 
 
-class DynamicProperties(BasePage):
+class DynamicPropertiesPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
