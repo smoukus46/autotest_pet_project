@@ -64,6 +64,7 @@ class WebTablesPageLocators:
     NEXT_BTN = (By.CLASS_NAME, "-next")
     PREVIOUS_BTN = (By.CLASS_NAME, "-previous")
     ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")
+    USER_ADD_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[1]")
     # REGISTRATION_FORM
     FIRST_NAME_INPUT = (By.ID, "firstName")
     LAST_NAME_INPUT = (By.ID, "lastName")

@@ -51,6 +51,7 @@ class CheckBoxPage(BasePage):
         span_text = []
         result_box_element = self.find(CheckBoxPageLocators.RESULT_BOX)
         span_elements = result_box_element.find_elements_by_tag_name("span")
+
         for span_element in span_elements:
             span_text.append(span_element)
             print(span_element.text)
