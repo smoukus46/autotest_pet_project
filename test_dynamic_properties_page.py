@@ -4,7 +4,7 @@ from pytest_testrail.plugin import pytestrail
 
 
 @pytestrail.case('C37')
-def check_dynamic_properties(browser):
+def test_check_dynamic_properties(browser):
     dynamic_properties_page = DynamicPropertiesPage(browser)
     dynamic_properties_page.open_main_page()
     dynamic_properties_page.click_menu_elements_button()

@@ -46,3 +46,16 @@ class CheckBoxPage(BasePage):
 
     def click_home_checkbox(self):
         self.button_click(CheckBoxPageLocators.HOME_CHECKBOX)
+
+    def check_result_box(self, assertion_text):
+        span_text = []
+        result_box_element = self.find(CheckBoxPageLocators.RESULT_BOX)
+        span_elements = result_box_element.find_elements_by_tag_name("span")
+        for span_element in span_elements:
+            span_text.append(span_element)
+            print(span_element.text)
+        print(span_text)
+        assert assertion_text in span_text
+
+    def result_box_is_not_displayed(self):
+        self.element_is_not_displayed(CheckBoxPageLocators.RESULT_BOX)
