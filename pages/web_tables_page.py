@@ -4,6 +4,7 @@ from .locators import *
 registration_form_inputs = [WebTablesPageLocators.FIRST_NAME_INPUT, WebTablesPageLocators.LAST_NAME_INPUT,
                             WebTablesPageLocators.EMAIL_INPUT, WebTablesPageLocators.AGE_INPUT,
                             WebTablesPageLocators.SALARY_INPUT, WebTablesPageLocators.DEPARTMENT_INPUT]
+adding_info = ['Artem', 'Alenin', 'Artem.Alenin@test.ru', '24', '2000', 'DPR']
 
 
 class WebTablesPage(BasePage):
@@ -20,18 +21,13 @@ class WebTablesPage(BasePage):
         self.items_is_displayed(registration_form_inputs)
 
     def fill_registration_form(self):
-        self.fill_input(WebTablesPageLocators.FIRST_NAME_INPUT, 'Artem')
-        self.fill_input(WebTablesPageLocators.LAST_NAME_INPUT, 'Alenin')
-        self.fill_input(WebTablesPageLocators.EMAIL_INPUT, 'Artem.Alenin@test.ru')
-        self.fill_input(WebTablesPageLocators.AGE_INPUT, '24')
-        self.fill_input(WebTablesPageLocators.SALARY_INPUT, '2000')
-        self.fill_input(WebTablesPageLocators.DEPARTMENT_INPUT, 'DPR')
+        for i in range(len(registration_form_inputs)):
+            self.fill_input(registration_form_inputs[i], adding_info[i])
 
     def click_submit_button(self):
         self.button_click(WebTablesPageLocators.SUBMIT_BTN)
 
     def check_added_result(self):
-        adding_info = ['Artem', 'Alenin', 'Artem.Alenin@test.ru', '24', '2000', 'DPR']
         row_info = []
         added_row = self.find(WebTablesPageLocators.USER_ADD_ROW)
         row_elements = added_row.find_elements_by_tag_name('div')
@@ -44,3 +40,20 @@ class WebTablesPage(BasePage):
         for info in adding_info:
             assert info in row_info
             print(info)
+
+    def open_edit_form(self):
+        self.button_click(WebTablesPageLocators.EDIT_BTN_ONE)
+
+    def fill_salary_input(self):
+        self.find(WebTablesPageLocators.SALARY_INPUT).clear()
+        self.find(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
+
+    def check_editing_row(self):
+        row_info = []
+        row = self.find(WebTablesPageLocators.FIRST_ROW)
+        row_elements = row.find_elements_by_tag_name('div')
+
+        for element in row_elements:
+            row_info.append(element.text)
+
+        assert row_info[4] == ['25000']
