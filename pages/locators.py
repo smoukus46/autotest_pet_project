@@ -186,10 +186,13 @@ class ModalDialogsPageLocators:
 class AccordianPageLocators:
     ACCORDIAN_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Accordian']")
     FIRST_SECTION_HEADING = (By.ID, "section1Heading")
+    FIRST_SECTION_BODY = (By.XPATH, "//div[@id='section1Content']")
     FIRST_SECTION_CONTENT = (By.CSS_SELECTOR, "#section1Content p")
     SECOND_SECTION_HEADING = (By.ID, "section2Heading")
+    SECOND_SECTION_BODY = (By.XPATH, "//div[@id='section2Content']")
     SECOND_SECTION_CONTENT = (By.CSS_SELECTOR, "#section2Content:first-child")
     THIRD_SECTION_HEADING = (By.ID, "section3Heading")
+    THIRD_SECTION_BODY = (By.XPATH, "//div[@id='section3Content']")
     THIRD_SECTION_CONTENT = (By.CSS_SELECTOR, "#section3Content p")
 
 
