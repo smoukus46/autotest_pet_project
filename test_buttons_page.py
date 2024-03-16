@@ -1,4 +1,4 @@
-from .pages.buttons_page import ButtonsPage
+from pages.buttons_page import ButtonsPage
 from pytest_testrail.plugin import pytestrail
 
 
