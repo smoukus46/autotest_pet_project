@@ -64,3 +64,6 @@ class BasePage:
     def fill_selector_by_value(self, locator, value):
         select = Select(self.browser.find(locator))
         select.select_by_value(value)
+
+    def capture_text(self, args):
+        return self.find(*args).text
