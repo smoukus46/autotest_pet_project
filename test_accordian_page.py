@@ -1,7 +1,6 @@
 from pages.accordian_page import AccordianPage
 from pytest_testrail.plugin import pytestrail
 from pages.locators import *
-import time
 
 sections_dict = {'first_section': [AccordianPageLocators.FIRST_SECTION_HEADING, AccordianPageLocators.FIRST_SECTION_BODY, AccordianPageLocators.FIRST_SECTION_CONTENT],
                  'second_section': [AccordianPageLocators.SECOND_SECTION_HEADING, AccordianPageLocators.SECOND_SECTION_BODY, AccordianPageLocators.SECOND_SECTION_CONTENT],
@@ -15,11 +14,12 @@ assert_texts = ["""Lorem Ipsum is simply dummy text of the printing and typesett
 
 @pytestrail.case('C12')
 def test_folding_and_unfolding_details(browser):
-    """ Проверка разворачивания и сворачивания деталей на странице"""
-    test_accordian_page = AccordianPage(browser)
-    test_accordian_page.open_main_page()
-    test_accordian_page.open_accordian_tab()
+    """Проверка разворачивания и сворачивания деталей на странице"""
+    test_accordian_page = AccordianPage(browser, 'https://demoqa.com/')
+    test_accordian_page.open()
+    test_accordian_page.click_menu_elements_button()
     test_accordian_page.widgets_menu_items_is_displayed()
+    test_accordian_page.open_accordian_tab()
     test_accordian_page.disclosure_section(sections_dict['first_section'][0])
     test_accordian_page.section_is_displayed(sections_dict['first_section'][1])
     text_in_first_section = test_accordian_page.section_text(sections_dict['first_section'][2])
