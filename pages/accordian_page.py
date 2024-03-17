@@ -1,4 +1,5 @@
 from .base_page import BasePage
+from selenium.common.exceptions import NoSuchElementException
 from .locators import *
 
 menu_items = [AccordianPageLocators.ACCORDIAN_ITEM, 
@@ -16,26 +17,36 @@ class AccordianPage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
 
-    def open_accordian_tab(self):
-        """Метод открывает форму Accordian"""
-        self.button_click(AccordianPageLocators.ACCORDIAN_ITEM)
+    def click_menu_widgets_button(self):
+        """Метод раскрывает выпадающий список Widgets"""
+        self.click_menu_elements_button(AccordianPageLocators.WIDGETS_PAGE)
 
     def widgets_menu_items_is_displayed(self):
         """Метод проверяет отображение элементов выпадающего списка Widgets"""
         return self.items_is_displayed(menu_items)
 
-    def disclosure_section(self, *args):
+    def open_accordian_tab(self):
+        """Метод открывает форму Accordian"""
+        self.button_click(AccordianPageLocators.ACCORDIAN_ITEM)
+
+    def disclosure_section(self, args):
         """Метод раскрывает деталь"""
         self.button_click(*args)
 
-    def section_is_displayed(self, *args):
+    def section_is_displayed(self, args):
         """Метод проверяет отображение раскрытой детали"""
-        self.is_element_displayed(*args)
+        try:
+            return self.is_element_displayed(*args)
+        except NoSuchElementException:
+            return False
 
-    def section_is_not_displayed(self, *args):
+    def section_is_not_displayed(self, args):
         """Метод проверяет скрытие предыдущей детали"""
-        self.items_is_not_displayed(*args)
+        try:
+            return self.items_is_not_displayed(*args)
+        except NoSuchElementException:
+            return False
 
-    def section_text(self,):
+    def section_text(self, args):
         """Метод проверяет текст внутри тела детали"""
-        return self.capture_text(AccordianPageLocators.FIRST_SECTION_CONTENT)
+        return self.capture_text(*args)
