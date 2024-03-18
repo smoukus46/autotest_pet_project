@@ -1,4 +1,5 @@
 from .base_page import BasePage
+from selenium.common.exceptions import NoSuchElementException
 from .locators import *
 
 menu_items = [AccordianPageLocators.ACCORDIAN_ITEM, 
@@ -32,3 +33,13 @@ class AutoCompletePage(BasePage):
         """Метод заполняет поле Type multiple color names"""
         self.fill_input(AutoCompletePageLocators.MULTIPLE_INPUT, *args)
 
+    def multiple_is_displayed(self):
+        try:
+            return self.is_element_displayed(AutoCompletePageLocators.MULTIPLE_MENU)
+        except NoSuchElementException:
+            return False
+
+    def select_item_in_list(self, args):
+        self.button_click(*args)
+
+    
