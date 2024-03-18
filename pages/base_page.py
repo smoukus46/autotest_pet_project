@@ -1,16 +1,12 @@
 from .locators import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
 
 menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_ITEM,
               RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
               ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
               BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
               DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
-browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 
 class BasePage:
