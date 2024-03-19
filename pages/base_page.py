@@ -13,7 +13,7 @@ class BasePage:
 
     def __init__(self, browser):
         self.browser = browser
-        self.browser.implicitly_wait(5)
+        # self.browser.implicitly_wait(5)
 
     def open(self, url):
         self.browser.get(url)

@@ -8,7 +8,7 @@ from pages.base_page import BasePage
 class AccordianPageLocators:
     
     # Кнопка Widgets в главном меню
-    WIDGETS_PAGE = (By.XPATH, "//*[text()='Widgets']")
+    WIDGETS_PAGE = (By.CSS_SELECTOR, ".category-cards > div:nth-child(4)")
 
     # Кнопка Accordian в выпадающем списке Widgets
     ACCORDIAN_ITEM = (By.XPATH, "//span[text()='Accordian']")
@@ -62,7 +62,7 @@ class AccordianPage(BasePage):
                                      (By.XPATH, "//span[text()='Select Menu']")]
         try:
             for locator in widgets_dropdown_locators:
-                WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located(*locator))
+                WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located(locator))
             return True
         except Exception as e:
             print("An error occurred:", e)

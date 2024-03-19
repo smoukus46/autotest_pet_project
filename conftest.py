@@ -10,6 +10,6 @@ def browser(request):
     browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     browser.maximize_window()
     
-    browser.implicitly_wait(5)
+    # browser.implicitly_wait(5)
     yield browser
     browser.quit()
