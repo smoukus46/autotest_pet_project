@@ -1,6 +1,8 @@
 from .locators import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_ITEM,
               RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
@@ -21,8 +23,9 @@ class BasePage:
     def open_main_page(self):
         self.open('https://demoqa.com/')
 
-    def find(self, args):
-        return self.browser.find_element(*args)
+    def find_element(self, locator, time=10):
+        """Ищет один элемент, подходящий по условию"""
+        return WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator))
 
     def is_element_displayed(self, locator):
         return self.find(locator).is_displayed()
