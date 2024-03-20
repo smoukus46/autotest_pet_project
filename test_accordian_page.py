@@ -1,4 +1,4 @@
-from pages.accordian_page import AccordianPage, AccordianPageLocators
+from pages.accordian_page import AccordianPage
 from pytest_testrail.plugin import pytestrail
 
 
