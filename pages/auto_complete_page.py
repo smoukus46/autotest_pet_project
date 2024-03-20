@@ -1,24 +1,56 @@
-from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import NoSuchElementException
+from pages.locators import MainPageLocators
+from selenium.webdriver.common.keys import Keys
+from pages.main_page import MainPage
+
 
 class AutoCompleteLocators:
 
+    # Кнопка Auto Complete в выпадающем списке Widgets
     AUTO_COMPLETE_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Auto Complete']")
+
+    # Поле multiple
     MULTIPLE_INPUT = (By.ID, "autoCompleteMultipleInput")
-    MULTIPLE_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']")
+
+    # Кнопка очистки поля multiple
+    MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME, "//div[contains(concat(' ', normalize-space(@class), ' '), ' auto-complete__indicator ') and contains(concat(' ', normalize-space(@class), ' '), ' auto-complete__clear-indicator ')]")
+
+    # Поле single
     SINGLE_INPUT = (By.ID, "autoCompleteSingleInput")
-    FIRST_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[1]")
-    SECOND_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[2]")
-    THIRD_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[3]")
-    SELECTED_FIRST_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][1]")
-    SELECTED_SECOND_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][2]")
-    SELECTED_THIRD_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][3]")
-    MULTIPLE_AUTO_COMPLETE_REMOVE_BTN = (By.XPATH, "(//div[@class='css-xb97g8 auto-complete__multi-value__remove'])[1]")
-    MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME,
-                                 "auto-complete__indicator auto-complete__clear-indicator css-tlfecz-indicatorContainer")
 
 
-class AutoCompletePage(BasePage):
+
+class AutoCompletePage(MainPage):
+
+    def click_widgets_button(self):
+        """Нажимает кнопку "Widgets" в главном меню"""
+        return self.click_button_page(MainPageLocators.BUTTON_WIDGETS)
+
+    def click_auto_complete_button(self):
+        """Нажимает кнопку "Auto complete" в выпадающем списке Widgets"""
+        return self.find_element(AutoCompleteLocators.AUTO_COMPLETE_ITEM).click()
+
+    def fill_input_multiple(self):
+        """Заполняет поле multiple значением r"""
+        return self.fill_input(AutoCompleteLocators.MULTIPLE_INPUT, "r")
+
+    def key_enter_multiple(self):
+        """Нажимает клавишу "Enter" для выбора 1 значения из выпадающего списка в поле multiple"""
+        return self.key_enter(AutoCompleteLocators.MULTIPLE_INPUT)
+
+    def key_del_multiple(self):
+        """Нажимает клавишу "DEL" в поле multiple"""
+        return self.key_delete(AutoCompleteLocators.MULTIPLE_INPUT)
+
+    def delete_all_values_in_multiple(self):
+        """Очищает поле multiple"""
+        return self.find_element(AutoCompleteLocators.MULTIPLE_INPUT_REMOVE_BTN).click()
+
+    def fill_input_single(self):
+        """Заполняет поле single значением g"""
+        return self.fill_input(AutoCompleteLocators.SINGLE_INPUT, "g")
+
+    def key_enter_single(self):
+        """Нажимает клавишу "Enter" для выбора 1 значения из выпадающего списка в поле single"""
+        return self.key_enter(AutoCompleteLocators.SINGLE_INPUT)
