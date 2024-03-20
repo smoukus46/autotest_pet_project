@@ -3,31 +3,34 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_ITEM,
-              RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
-              ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
-              BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
-              DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
+from selenium.webdriver.common.keys import Keys
 
 
 class BasePage:
 
     def __init__(self, browser):
         self.browser = browser
-        # self.browser.implicitly_wait(5)
 
     def open(self, url):
         self.browser.get(url)
-
-    def open_main_page(self):
-        self.open('https://demoqa.com/')
 
     def find_element(self, locator, time=10):
         """Ищет один элемент, подходящий по условию"""
         element = WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator))
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
         return element
+
+    def fill_input(self, element_locator, sending_text: str):
+        """Заполняет поле"""
+        self.find_element(element_locator).send_keys(sending_text)
+
+    def key_enter(self, locator):
+        """Нажимает клавишу ENTER"""
+        return self.find_element(locator).send_keys(Keys.ENTER)
+
+    def key_delete(self, locator):
+        """Нажимает клавишу DELETE"""
+        return self.find_element(locator).send_keys(Keys.DELETE)
 
     def is_element_displayed(self, locator):
         return self.find(locator).is_displayed()
@@ -48,9 +51,6 @@ class BasePage:
 
     def elements_menu_items_is_displayed(self):
         return self.items_is_displayed(menu_items)
-
-    def fill_input(self, element_locator, sending_text):
-        self.find(element_locator).send_keys(sending_text)
 
     def click_menu_elements_button(self, args):
         self.button_click(*args)
