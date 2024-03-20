@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from pages.base_page import BasePage
 
 
@@ -24,6 +25,22 @@ class MainPageLocators:
 
 class MainPage(BasePage):
 
+    def open_main_page(self):
+        """Открывает в браузере главную страницу demoqa"""
+        self.open('https://demoqa.com/')
+
     def click_button_page(self, args):
         """Нажимает кнопку перехода на нужную страницу в главном меню"""
         return self.find_element(args).click()
+
+    def check_tabs_in_main_dropdown(self, args):
+        """Проверяет отображение позиций выпадающего списка"""
+        elements = args
+        try:
+            for element in elements:
+                return self.find_element(element).is_displayed()
+        except NoSuchElementException:
+            print("Элемент не найден на странице")
+
+    def click_button_widgets_page(self):
+        return self.find_element(MainPageLocators.BUTTON_WIDGETS).click()
