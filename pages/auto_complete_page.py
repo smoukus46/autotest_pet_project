@@ -1,45 +1,24 @@
-from .base_page import BasePage
+from pages.base_page import BasePage
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-from .locators import *
 
-menu_items = [AccordianPageLocators.ACCORDIAN_ITEM, 
-              AutoCompletePageLocators.AUTO_COMPLETE_ITEM, 
-              DatePickerPageLocators.DATE_PICKER_ITEM, 
-              SliderPageLocators.SLIDER_ITEM, 
-              ProgressBarPageLocators.PROGRESS_BAR_ITEM, 
-              TabsPageLocators.TABS_ITEM, 
-              ToolTipsPageLocators.TOOL_TIPS_ITEM, 
-              MenuPageLocators.MENU_ITEM, 
-              SelectMenuPageLocators.SELECT_MENU_ITEM]
+class AutoCompleteLocators:
+
+    AUTO_COMPLETE_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Auto Complete']")
+    MULTIPLE_INPUT = (By.ID, "autoCompleteMultipleInput")
+    MULTIPLE_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']")
+    SINGLE_INPUT = (By.ID, "autoCompleteSingleInput")
+    FIRST_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[1]")
+    SECOND_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[2]")
+    THIRD_ELEMENT_MENU = (By.XPATH, "//div[@class='auto-complete__menu-list auto-complete__menu-list--is-multi css-11unzgr']/div[3]")
+    SELECTED_FIRST_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][1]")
+    SELECTED_SECOND_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][2]")
+    SELECTED_THIRD_ITEM = (By.XPATH, "//div[@class='css-1rhbuit-multiValue auto-complete__multi-value'][3]")
+    MULTIPLE_AUTO_COMPLETE_REMOVE_BTN = (By.XPATH, "(//div[@class='css-xb97g8 auto-complete__multi-value__remove'])[1]")
+    MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME,
+                                 "auto-complete__indicator auto-complete__clear-indicator css-tlfecz-indicatorContainer")
+
 
 class AutoCompletePage(BasePage):
-    
-    def __init__(self, browser):
-        super().__init__(browser)
-
-    def click_menu_widgets_button(self):
-        """Метод открывает выпадающий список Widgets"""
-        self.click_menu_elements_button(AccordianPageLocators.WIDGETS_PAGE)
-
-    def widgets_menu_items_is_displayed(self):
-        """Метод проверяет отображение элементов выпадающего списка Widgets"""
-        return self.items_is_displayed(menu_items)
-
-    def open_auto_complete_tab(self):
-        """Метод открывает форму Auto complete"""
-        self.button_click(AutoCompletePage.AUTO_COMPLETE_ITEM)
-
-    def filling_field(self, args):
-        """Метод заполняет поле Type multiple color names"""
-        self.fill_input(AutoCompletePageLocators.MULTIPLE_INPUT, *args)
-
-    def multiple_is_displayed(self):
-        try:
-            return self.is_element_displayed(AutoCompletePageLocators.MULTIPLE_MENU)
-        except NoSuchElementException:
-            return False
-
-    def select_item_in_list(self, args):
-        self.button_click(*args)
-
-    

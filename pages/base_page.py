@@ -25,7 +25,9 @@ class BasePage:
 
     def find_element(self, locator, time=10):
         """Ищет один элемент, подходящий по условию"""
-        return WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator))
+        element = WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator))
+        self.browser.execute_script("arguments[0].scrollIntoView();", element)
+        return element
 
     def is_element_displayed(self, locator):
         return self.find(locator).is_displayed()
