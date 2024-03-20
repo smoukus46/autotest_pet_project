@@ -8,7 +8,7 @@ def test_folding_and_unfolding_details(browser):
     """Проверка разворачивания и сворачивания деталей на странице"""
     test_accordian_page = AccordianPage(browser)
     test_accordian_page.open_main_page()
-    test_accordian_page.click_widgets_button()
+    test_accordian_page.click_button_widgets_page()
     test_accordian_page.click_accordian_button()
     test_accordian_page.click_button_first_section()
     test_accordian_page.first_body_is_present()
