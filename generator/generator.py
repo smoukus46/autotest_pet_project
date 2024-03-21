@@ -57,6 +57,7 @@ class Date:
     - time = Время;
     """
     year: str = field(default_factory=fake_en.year)
-    month: str = field(default_factory=fake_en.month)
+    month_number: str = field(default_factory=fake_en.month)
+    month_name: str = field(default_factory=fake_en.month_name)
     day: str = field(default_factory=fake_en.day_of_month)
     time: str = field(default_factory=fake_en.time)
