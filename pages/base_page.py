@@ -32,40 +32,7 @@ class BasePage:
         """Нажимает клавишу DELETE"""
         return self.find_element(locator).send_keys(Keys.DELETE)
 
-    def is_element_displayed(self, locator):
-        return self.find(locator).is_displayed()
-
-    def element_is_not_displayed(self, locator):
-        return self.find(locator).is_not_displayed()
-
-    def items_is_displayed(self, items):
-        for item in items:
-            return self.is_element_displayed(item)
-
-    def items_is_not_displayed(self, items):
-        for item in items:
-            return self.element_is_not_displayed(item)
-
-    def button_click(self, button):
-        self.find(button).click()
-
-    def elements_menu_items_is_displayed(self):
-        return self.items_is_displayed(menu_items)
-
-    def click_menu_elements_button(self, args):
-        self.button_click(*args)
-
-    def button_double_click(self):
-        action = ActionChains(self.browser)
-        action.double_click(ButtonsPageLocators.DOUBLE_CLICK_BTN).perform()
-
-    def button_right_click(self):
-        action = ActionChains(self.browser)
-        action.context_click(ButtonsPageLocators.RIGHT_CLICK_BTN).perform()
-
-    def fill_selector_by_value(self, locator, value):
+    def select_value_text(self, locator, value):
+        """Выбирает значение из тега select по видимому тексту"""
         select = Select(self.find(locator))
-        select.select_by_value(value)
-
-    def capture_text(self, args):
-        return self.find(*args).text
+        select.select_by_visible_text(value)
