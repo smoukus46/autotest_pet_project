@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from pages.locators import MainPageLocators
-from selenium.webdriver.common.keys import Keys
 from pages.main_page import MainPage
+from generator.generator import Colors
 
 
 class AutoCompleteLocators:
@@ -14,7 +14,7 @@ class AutoCompleteLocators:
     MULTIPLE_INPUT = (By.ID, "autoCompleteMultipleInput")
 
     # Кнопка очистки поля multiple
-    MULTIPLE_INPUT_REMOVE_BTN = (By.CLASS_NAME, "//div[contains(concat(' ', normalize-space(@class), ' '), ' auto-complete__indicator ') and contains(concat(' ', normalize-space(@class), ' '), ' auto-complete__clear-indicator ')]")
+    MULTIPLE_INPUT_REMOVE_BTN = (By.CSS_SELECTOR, "div[class='css-1rhbuit-multiValue auto-complete__multi-value'] svg path")
 
     # Поле single
     SINGLE_INPUT = (By.ID, "autoCompleteSingleInput")
@@ -32,8 +32,9 @@ class AutoCompletePage(MainPage):
         return self.find_element(AutoCompleteLocators.AUTO_COMPLETE_ITEM).click()
 
     def fill_input_multiple(self):
-        """Заполняет поле multiple значением r"""
-        return self.fill_input(AutoCompleteLocators.MULTIPLE_INPUT, "r")
+        """Заполняет поле multiple рандомным значением"""
+        color = Colors()
+        return self.fill_input(AutoCompleteLocators.MULTIPLE_INPUT, f"{color.colors}")
 
     def key_enter_multiple(self):
         """Нажимает клавишу "Enter" для выбора 1 значения из выпадающего списка в поле multiple"""
@@ -48,8 +49,9 @@ class AutoCompletePage(MainPage):
         return self.find_element(AutoCompleteLocators.MULTIPLE_INPUT_REMOVE_BTN).click()
 
     def fill_input_single(self):
-        """Заполняет поле single значением g"""
-        return self.fill_input(AutoCompleteLocators.SINGLE_INPUT, "g")
+        """Заполняет поле single рандомным значением"""
+        color = Colors()
+        return self.fill_input(AutoCompleteLocators.SINGLE_INPUT, f"{color.colors}")
 
     def key_enter_single(self):
         """Нажимает клавишу "Enter" для выбора 1 значения из выпадающего списка в поле single"""
