@@ -33,7 +33,7 @@ class MainPage(BasePage):
         """Нажимает кнопку перехода на нужную страницу в главном меню"""
         return self.find_element(args).click()
 
-    def check_tabs_in_main_dropdown(self, args):
+    def check_tabs_in_main_dropdown(self, args: list):
         """Проверяет отображение позиций выпадающего списка"""
         elements = args
         try:
