@@ -1,3 +1,4 @@
+import time
 from .locators import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
@@ -14,11 +15,15 @@ class BasePage:
     def open(self, url):
         self.browser.get(url)
 
-    def find_element(self, locator, time=10):
+    def find_element(self, locator, time=20):
         """Ищет один элемент, подходящий по условию"""
-        element = WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator))
+        element = WebDriverWait(self.browser, time).until(EC.visibility_of_element_located(locator))
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
         return element
+    
+    def find_elements(self, locator, time=20):
+        """Ищет все элементы, подходящие по условию"""
+        return WebDriverWait(self.browser, time).until(EC.visibility_of_all_elements_located(locator))
 
     def fill_input(self, element_locator, sending_text: str):
         """Заполняет поле"""
@@ -34,5 +39,21 @@ class BasePage:
 
     def select_value_text(self, locator, value):
         """Выбирает значение из тега select по видимому тексту"""
-        select = Select(self.find(locator))
+        select = Select(self.find_element(locator))
         select.select_by_visible_text(value)
+
+    def get_attribute_element(self, locator, attribute="value"):
+        """Берет значение у атрибута элемента"""
+        element = self.find_element(locator)
+        value = element.get_attribute(attribute)
+        return value
+
+    def simple_pause(self, _time):
+        """Пауза, необходимо в метод передавать число секунд, которое нужно ожидать"""
+        return time.sleep(_time)
+
+    def slider_move(self, locator, x, y):
+        """Удерживает элемент ЛКМ и перетягивает его влево или вправо"""
+        actions = ActionChains(self.browser)
+        actions.drag_and_drop_by_offset(locator, x, y)
+        actions.perform()
