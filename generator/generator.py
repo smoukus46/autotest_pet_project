@@ -1,4 +1,5 @@
 from faker import Faker
+from datetime import datetime, timedelta
 from dataclasses import dataclass, field
 import random
 
@@ -6,6 +7,13 @@ import random
 Faker.seed()
 fake_ru = Faker('ru_RU')
 fake_en = Faker('EN')
+
+
+def calculate_next_time():
+    now = datetime.now()
+    nearest_quarter_hour = (now + timedelta(minutes=15 - now.minute % 15)).replace(second=0, microsecond=0)
+    return nearest_quarter_hour.strftime("%H:%M")
+
 
 @dataclass
 class Person:
@@ -52,12 +60,14 @@ class Date:
     """Генерирует даты
 
     - year = Год;
-    - month = Месяц;
+    - month_number = номер месяца;
+    - month_name = Название месяца;
     - day = День месяца;
-    - time = Время;
+    - time = Время в формате {HH:MM};
     """
-    year: str = field(default_factory=fake_en.year)
+    year_for_date_and_time: str = field(default_factory=lambda: fake_ru.random_int(2019, 2029))
+    year_for_select_date: str = field(default_factory=fake_en.year)
     month_number: str = field(default_factory=fake_en.month)
     month_name: str = field(default_factory=fake_en.month_name)
     day: str = field(default_factory=fake_en.day_of_month)
-    time: str = field(default_factory=fake_en.time)
+    time: str = field(default_factory=calculate_next_time)
