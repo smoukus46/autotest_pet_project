@@ -1,9 +1,8 @@
 import random
-import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
 from pages.main_page import MainPage
+
 
 class SliderPageLocators:
 
@@ -25,8 +24,9 @@ class SliderPage(MainPage):
 
     def move_slider_left_or_right(self):
         """Перемещает ползунок влево или вправо"""
-        # value_before = self.get_attribute_element(SliderPageLocators.SLIDER_ITEM_INPUT_VALUE)
+        value_before = self.find_element(SliderPageLocators.SLIDER_ITEM_INPUT_VALUE)
+        print(value_before.get_attribute("value"))
         element = self.find_element(SliderPageLocators.SLIDER_ITEM_INPUT)
         self.slider_move(element, random.randint(1, 100), 0)
-        # value_after = self.get_attribute_element(SliderPageLocators.SLIDER_ITEM_INPUT_VALUE)
-        # print(f"Изначальное значение: {value_before}, значение после перемещения полузнка: {value_after}")
+        value_after = self.find_element(SliderPageLocators.SLIDER_ITEM_INPUT_VALUE)
+        print(value_after.get_attribute("value"))
