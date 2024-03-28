@@ -3,6 +3,7 @@ from .locators import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 
@@ -57,3 +58,11 @@ class BasePage:
         actions = ActionChains(self.browser)
         actions.drag_and_drop_by_offset(locator, x, y)
         actions.perform()
+
+    def element_not_be_clickable(self, locator, time=3):
+        """Проверяет некликабельность элемента"""
+        try:
+            element = WebDriverWait(self.browser, time).until(lambda driver: driver.find_element(*locator).is_enabled() is False)
+            return True
+        except TimeoutException:
+            return False

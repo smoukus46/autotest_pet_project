@@ -30,6 +30,9 @@ class TabsPageLocators:
     # Содержимое вкладки Use
     TAB_USE_CONTENT = (By.XPATH, "//div[@id='demo-tabpane-use']/p")
 
+    # Кнопка вкладки More
+    TAB_MORE_BUTTON = (By.CSS_SELECTOR, "a[id='demo-tab-more']")
+
 
 class TabsPage(MainPage):
 
@@ -46,16 +49,27 @@ class TabsPage(MainPage):
         "tab_use": {
             "use_button": TabsPageLocators.TAB_USE_BUTTON,
             "use_content": TabsPageLocators.TAB_USE_CONTENT
-        }
+        },
+        "tab_more": {
+            "more_button": TabsPageLocators.TAB_MORE_BUTTON
+            }
         }
 
-    def click_slider_button(self):
+
+    def click_tab_button(self):
         """Нажимает кнопку "Tabs" в выпадающем списке Widgets"""
         return self.find_element(TabsPageLocators.TABS_ITEM).click()
     
-    def click_and_check_tab(self, button, content):
+    def click_and_check_tab(self, button, tab):
         """Жмет кнопку вкладки и проверяет содержимое"""
-        self.find_element(button).click()
-        tab_contents = self.find_element(content).text
-        return len(tab_contents)
-    
+        return self.find_element(self.tabs_dict[button][tab]).click()
+
+    def check_content_tab(self, button, content):
+        """Проверяет, что содержимое вкладки не пустое"""
+        text = self.find_element(self.tabs_dict[button][content]).text
+        print(len(text))
+        return text
+
+    def check_not_clickable_tab(self, locator):
+        """Проверяет, что нельзя открыть вкладку more"""
+        return self.element_not_be_clickable(self.tabs_dict['tab_more'][locator])

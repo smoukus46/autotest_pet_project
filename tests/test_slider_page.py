@@ -1,4 +1,3 @@
-import time
 from pages.slider_page import SliderPage
 from pytest_testrail.plugin import pytestrail
 
