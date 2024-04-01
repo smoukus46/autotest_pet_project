@@ -66,3 +66,17 @@ class BasePage:
             return True
         except TimeoutException:
             return False
+
+    def element_is_visible(self, locator):
+        """Метод проверяет отображается ли элемент на экране"""
+        try:
+            self.find_element(locator)
+            return True
+        except TimeoutException:
+            return False
+
+    def hovering_mouse_an_item(self, locator):
+        """Перемещает курсор мыши на элемент"""
+        actions = ActionChains(self.browser)
+        actions.move_to_element(self.find_element(locator))
+        actions.perform()
