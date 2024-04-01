@@ -32,9 +32,9 @@ class MenuPage(MainPage):
         """Нажимает кнопку "Menu" в выпадающем списке Widgets"""
         return self.find_element(MenuPageLocators.MENU_ITEM).click()
     
-    def check_sub_item_in_menu(self, elements):
+    def check_sub_item_in_menu(self, locator):
         """Проверяет отображение элемент в выпадающем списке"""
-        item_list = self.find_elements(elements)
+        item_list = self.find_elements(locator)
         
         for item in item_list:
             self.hovering_mouse_an_item(item)

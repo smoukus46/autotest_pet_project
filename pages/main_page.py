@@ -25,13 +25,20 @@ class MainPageLocators:
 
 class MainPage(BasePage):
 
+    pages_dict = {
+        'pages': {
+            'elements_page': MainPageLocators.BUTTON_ELEMENTS,
+            'forms_page': MainPageLocators.BUTTON_FORMS,
+            'alerts_page': MainPageLocators.BUTTON_ALERTS_FRAME_WINDOWS,
+            'widgets_page': MainPageLocators.BUTTON_WIDGETS,
+            'interactions_page': MainPageLocators.BUTTON_INTERACTIONS,
+            'book_store_page': MainPageLocators.BUTTON_BOOK_STORE_APPLICATION
+        }
+    }
+
     def open_main_page(self):
         """Открывает в браузере главную страницу demoqa"""
         self.open('https://demoqa.com/')
-
-    def click_button_page(self, args):
-        """Нажимает кнопку перехода на нужную страницу в главном меню"""
-        return self.find_element(args).click()
 
     def check_tabs_in_main_dropdown(self, args: list):
         """Проверяет отображение позиций выпадающего списка"""
@@ -42,5 +49,7 @@ class MainPage(BasePage):
         except NoSuchElementException:
             print("Элемент не найден на странице")
 
-    def click_button_widgets_page(self):
-        return self.find_element(MainPageLocators.BUTTON_WIDGETS).click()
+    # Поправить в теле ТК
+    def click_button_page(self, page):
+        """Нажимает кнопку перехода на нужную страницу в главном меню"""
+        return self.find_element(self.pages_dict['pages'][page]).click()
