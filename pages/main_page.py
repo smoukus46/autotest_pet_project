@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from .locators import *
 from pages.base_page import BasePage
 
 
@@ -23,6 +24,13 @@ class MainPageLocators:
     # Кнопка Book Store Application
     BUTTON_BOOK_STORE_APPLICATION = (By.CSS_SELECTOR, ".category-cards > div:nth-child(6)")
 
+menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_ITEM,
+              RadioBtnPageLocators.RADIO_BTN_ITEM, WebTablesPageLocators.WEB_TABLES_ITEM,
+              ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
+              BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
+              DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
+
+
 class MainPage(BasePage):
 
     def open_main_page(self):
@@ -44,3 +52,9 @@ class MainPage(BasePage):
 
     def click_button_widgets_page(self):
         return self.find_element(MainPageLocators.BUTTON_WIDGETS).click()
+
+    def click_menu_elements_button(self):
+        return self.find_element(MainPageLocators.BUTTON_ELEMENTS).click()
+
+    def elements_menu_items_is_displayed(self):
+        return self.items_is_displayed(menu_items)

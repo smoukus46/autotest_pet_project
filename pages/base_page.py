@@ -16,15 +16,15 @@ class BasePage:
     def open(self, url):
         self.browser.get(url)
 
-    def find_element(self, locator, time=20):
+    def find_element(self, locator, _time=20):
         """Ищет один элемент, подходящий по условию"""
-        element = WebDriverWait(self.browser, time).until(EC.visibility_of_element_located(locator))
+        element = WebDriverWait(self.browser, _time).until(EC.visibility_of_element_located(locator))
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
         return element
     
-    def find_elements(self, locator, time=20):
+    def find_elements(self, locator, _time=20):
         """Ищет все элементы, подходящие по условию"""
-        return WebDriverWait(self.browser, time).until(EC.visibility_of_all_elements_located(locator))
+        return WebDriverWait(self.browser, _time).until(EC.visibility_of_all_elements_located(locator))
 
     def fill_input(self, element_locator, sending_text: str):
         """Заполняет поле"""
@@ -80,3 +80,21 @@ class BasePage:
         actions = ActionChains(self.browser)
         actions.move_to_element(self.find_element(locator))
         actions.perform()
+
+    def is_element_displayed(self, locator):
+        return self.find_element(locator).is_displayed()
+
+    def element_is_not_displayed(self, locator):
+        return self.find_element(locator).is_not_displayed()
+
+    def items_is_displayed(self, items):
+        for item in items:
+            return self.is_element_displayed(item)
+
+    def items_is_not_displayed(self, items):
+        for item in items:
+            return self.element_is_not_displayed(item)
+
+    def fill_selector_by_value(self, locator, value):
+        select = Select(self.browser.find(locator))
+        select.select_by_value(value)

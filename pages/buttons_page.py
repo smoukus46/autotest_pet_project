@@ -1,8 +1,9 @@
-from .base_page import BasePage
+from .main_page import MainPage
+from selenium.webdriver import ActionChains
 from .locators import *
 
 
-class ButtonsPage(BasePage):
+class ButtonsPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
@@ -16,7 +17,15 @@ class ButtonsPage(BasePage):
         return self.is_element_displayed(ButtonsPageLocators.DYNAMIC_CLICK_MESSAGE)
 
     def open_buttons_tab(self):
-        self.button_click(ButtonsPageLocators.BUTTONS_ITEM)
+        self.find_element(ButtonsPageLocators.BUTTONS_ITEM).click()
 
     def click_dynamic_button(self):
-        self.button_click(ButtonsPageLocators.CLICK_ME_BTN)
+        self.find_element(ButtonsPageLocators.CLICK_ME_BTN).click()
+
+    def button_double_click(self):
+        action = ActionChains(self.browser)
+        action.double_click(self.find_element(ButtonsPageLocators.DOUBLE_CLICK_BTN)).perform()
+
+    def button_right_click(self):
+        action = ActionChains(self.browser)
+        action.context_click(self.find_element(ButtonsPageLocators.RIGHT_CLICK_BTN)).perform()
