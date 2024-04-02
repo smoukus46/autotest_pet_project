@@ -8,5 +8,6 @@ def test_menu(browser):
     test_menu.open_main_page()
     test_menu.click_button_page('widgets_page')
     test_menu.click_menu_button()
-    test_menu.check_elements_in_menu()
-    test_menu.check_elements_in_sub_menu()
+    test_menu.check_first_main_item()
+    test_menu.check_second_main_item()
+    test_menu.check_third_main_item()
