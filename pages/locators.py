@@ -80,7 +80,7 @@ class ButtonsPageLocators:
     BUTTONS_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Buttons']")
     DOUBLE_CLICK_BTN = (By.ID, "doubleClickBtn")
     RIGHT_CLICK_BTN = (By.ID, "rightClickBtn")
-    CLICK_ME_BTN = (By.ID, "9ksW1")
+    CLICK_ME_BTN = (By.XPATH, "//button[text()='Click Me']")
     DOUBLE_CLICK_MESSAGE = (By.ID, "doubleClickMessage")
     RIGHT_CLICK_MESSAGE = (By.ID, "rightClickMessage")
     DYNAMIC_CLICK_MESSAGE = (By.ID, "dynamicClickMessage")

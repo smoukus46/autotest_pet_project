@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from .main_page import MainPage
 from .locators import *
 
 registration_form_inputs = [WebTablesPageLocators.FIRST_NAME_INPUT, WebTablesPageLocators.LAST_NAME_INPUT,
@@ -7,15 +7,15 @@ registration_form_inputs = [WebTablesPageLocators.FIRST_NAME_INPUT, WebTablesPag
 adding_info = ['Artem', 'Alenin', 'Artem.Alenin@test.ru', '24', '2000', 'DPR']
 
 
-class WebTablesPage(BasePage):
+class WebTablesPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
     def open_web_tables_tab(self):
-        self.button_click(WebTablesPageLocators.WEB_TABLES_ITEM)
+        self.find_element(WebTablesPageLocators.WEB_TABLES_ITEM).click()
 
     def click_add_button(self):
-        self.button_click(WebTablesPageLocators.ADD_BTN)
+        self.find_element(WebTablesPageLocators.ADD_BTN).click()
 
     def registration_form_items_is_displayed(self):
         self.items_is_displayed(registration_form_inputs)
@@ -25,11 +25,11 @@ class WebTablesPage(BasePage):
             self.fill_input(registration_form_inputs[i], adding_info[i])
 
     def click_submit_button(self):
-        self.button_click(WebTablesPageLocators.SUBMIT_BTN)
+        self.find_element(WebTablesPageLocators.SUBMIT_BTN).click()
 
     def check_added_result(self):
         row_info = []
-        added_row = self.find(WebTablesPageLocators.USER_ADD_ROW)
+        added_row = self.find_element(WebTablesPageLocators.USER_ADD_ROW)
         row_elements = added_row.find_elements_by_tag_name('div')
 
         for element in row_elements:
@@ -42,15 +42,15 @@ class WebTablesPage(BasePage):
             print(info)
 
     def open_edit_form(self):
-        self.button_click(WebTablesPageLocators.EDIT_BTN_ONE)
+        self.find_element(WebTablesPageLocators.EDIT_BTN_ONE).click()
 
     def fill_salary_input(self):
-        self.find(WebTablesPageLocators.SALARY_INPUT).clear()
-        self.find(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
+        self.find_element(WebTablesPageLocators.SALARY_INPUT).clear()
+        self.find_element(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
 
     def check_editing_row(self):
         row_info = []
-        row = self.find(WebTablesPageLocators.FIRST_ROW)
+        row = self.find_element(WebTablesPageLocators.FIRST_ROW)
         row_elements = row.find_elements_by_tag_name('div')
 
         for element in row_elements:

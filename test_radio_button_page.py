@@ -11,7 +11,8 @@ def test_check_selecting_radio_button(browser):
     radio_button_page.elements_menu_items_is_displayed()
     radio_button_page.open_radio_button_tab()
     radio_button_page.click_yes_radio_button()
-    assert "Yes" == radio_button_page.find(RadioBtnPageLocators.RESULT_TEXT).text
+    assert "Yes" == radio_button_page.find_element(RadioBtnPageLocators.RESULT_TEXT).text, 'Текст кнопки не Yes'
     radio_button_page.click_impressive_radio_button()
-    assert "Impressive" == radio_button_page.find(RadioBtnPageLocators.RESULT_TEXT).text
-    radio_button_page.no_button_is_displayed()
+    assert ("Impressive" ==
+            radio_button_page.find_element(RadioBtnPageLocators.RESULT_TEXT).text), 'Текст кнопки не Impressive'
+    radio_button_page.no_button_is_disabled()

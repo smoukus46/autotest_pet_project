@@ -4,6 +4,7 @@ from pytest_testrail.plugin import pytestrail
 
 @pytestrail.case('C32')
 def test_fill_forms_on_text_box_page(browser):
+    """	Проверка работы кнопок на форме Buttons"""
     test_buttons_page = ButtonsPage(browser)
     test_buttons_page.open_main_page()
     test_buttons_page.click_menu_elements_button()

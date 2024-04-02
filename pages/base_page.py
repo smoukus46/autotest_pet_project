@@ -14,6 +14,7 @@ class BasePage:
         self.browser = browser
 
     def open(self, url):
+        """Открывает страницу по переданному урлу"""
         self.browser.get(url)
 
     def find_element(self, locator, _time=20):
@@ -75,26 +76,31 @@ class BasePage:
         except TimeoutException:
             return False
 
+    def element_is_invisible(self, locator):
+        """Метод проверяет отсутствует ли элемент на экране"""
+        try:
+            self.find_element(locator)
+        except TimeoutException:
+            return False
+        return True
+
     def hovering_mouse_an_item(self, locator):
         """Перемещает курсор мыши на элемент"""
         actions = ActionChains(self.browser)
         actions.move_to_element(self.find_element(locator))
         actions.perform()
 
-    def is_element_displayed(self, locator):
-        return self.find_element(locator).is_displayed()
-
-    def element_is_not_displayed(self, locator):
-        return self.find_element(locator).is_not_displayed()
-
     def items_is_displayed(self, items):
+        """Проверяет отображение нескольких элементов на странице"""
         for item in items:
-            return self.is_element_displayed(item)
+            return self.element_is_visible(item)
 
     def items_is_not_displayed(self, items):
+        """Проверяет отсутствие нескольких элементов на странице"""
         for item in items:
-            return self.element_is_not_displayed(item)
+            return self.element_is_invisible(item)
 
     def fill_selector_by_value(self, locator, value):
+        """Осуществляет заполнение селектора выбранным значением"""
         select = Select(self.browser.find(locator))
         select.select_by_value(value)

@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from .main_page import MainPage
 from .locators import *
 
 input_items = [TextBoxPageLocators.NAME_INPUT, TextBoxPageLocators.EMAIL_INPUT,
@@ -6,7 +6,7 @@ input_items = [TextBoxPageLocators.NAME_INPUT, TextBoxPageLocators.EMAIL_INPUT,
                TextBoxPageLocators.SUBMIT_BTN]
 
 
-class TextBoxPage(BasePage):
+class TextBoxPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
@@ -14,7 +14,7 @@ class TextBoxPage(BasePage):
         return self.items_is_displayed(input_items)
 
     def open_text_box_tab(self):
-        self.button_click(TextBoxPageLocators.TEXT_BOX_ITEM)
+        self.find_element(TextBoxPageLocators.TEXT_BOX_ITEM).click()
 
     def fill_name_input(self):
         self.fill_input(TextBoxPageLocators.NAME_INPUT, 'Artem.Alenin')
@@ -29,4 +29,4 @@ class TextBoxPage(BasePage):
         self.fill_input(TextBoxPageLocators.PERMANENT_ADDRESS_INPUT, 'Kosinovo village')
 
     def click_submit_button(self):
-        self.button_click(TextBoxPageLocators.SUBMIT_BTN)
+        self.find_element(TextBoxPageLocators.SUBMIT_BTN).click()
