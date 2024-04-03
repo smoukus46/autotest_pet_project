@@ -16,7 +16,7 @@ class RadioButtonPage(MainPage):
 
     def no_button_is_disabled(self):
         """Проверяет кнопку No на заблокированность"""
-        return self.find_element(RadioBtnPageLocators.NO_RADIO_BTN).get_attribute("disabled")
+        return self.find_element(RadioBtnPageLocators.NO_RADIO_BTN1).get_attribute("disabled")
 
     def open_radio_button_tab(self):
         """Открывает вкладку radio button"""

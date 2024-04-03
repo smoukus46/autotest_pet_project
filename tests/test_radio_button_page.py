@@ -1,10 +1,12 @@
-from .pages.radio_button_page import RadioButtonPage
+import time
+from pages.radio_button_page import RadioButtonPage
 from pytest_testrail.plugin import pytestrail
-from .pages.locators import *
+from pages.locators import *
 
 
 @pytestrail.case('C24')
 def test_check_selecting_radio_button(browser):
+    """Проверить возможность выбора радиокнопки на форме 'Radio Button'"""
     radio_button_page = RadioButtonPage(browser)
     radio_button_page.open_main_page()
     radio_button_page.click_menu_elements_button()

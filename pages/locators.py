@@ -45,10 +45,11 @@ class CheckBoxPageLocators:
 class RadioBtnPageLocators:
     RADIO_BTN_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Radio Button']")
     YES_RADIO_BTN = (By.ID, "yesRadio")
-    YES_RADIO_BTN1 = (By.XPATH, "//*[@id='app'/div/div/div/div[2]/div[2]/div[2]/label")
+    YES_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[2]")
     IMPRESSIVE_RADIO_BTN = (By.ID, "impressiveRadio")
-    IMPRESSIVE_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]/label")
+    IMPRESSIVE_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]")
     NO_RADIO_BTN = (By.CLASS_NAME, "custom-control-input disabled")
+    NO_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[4]")
     RESULT_TEXT = (By.CLASS_NAME, "text-success")
 
 
