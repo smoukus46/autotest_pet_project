@@ -12,3 +12,4 @@ def test_select_menu(browser):
     test_select_menu.click_and_fill_select_one_input()
     test_select_menu.click_and_fill_old_style_select_menu()
     test_select_menu.fill_standart_multi_select_input()
+    test_select_menu.click_and_fill_multiselect_dropdown_input()

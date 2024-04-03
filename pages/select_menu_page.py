@@ -36,7 +36,7 @@ class SelectMenuPageLocators:
     MULTISELECT_DROPDOWN_INPUT = (By.XPATH, "//*[@id='selectMenuContainer']/div[7]/div/div/div")
 
     # Выпадающие значения Multiselect Dropdown Menu
-    ELEMENT_IN_MULTISELECT_DROPDOWN_INPUT = (By.ID, f"react-select-12-option-{random.randint(0, 3)}")
+    ELEMENT_IN_MULTISELECT_DROPDOWN_INPUT = (By.XPATH, "//div[@class=' css-11unzgr']/div")
 
     # Кнопка очистки поля Multiselect Dropdown Menu
     CLEAR_MULTISELECT_DROPDOWN_INPUT = (By.CSS_SELECTOR, "#selectMenuContainer > div:nth-child(8) > div > div > div > div.css-1wy0on6 > div:nth-child(1) > svg > path")
@@ -70,11 +70,10 @@ class SelectMenuPage(MainPage):
     def click_and_fill_multiselect_dropdown_input(self):
         """Нажимает на поле Multiselect Dropdown Menu и заполняет его значением"""
         self.find_element(SelectMenuPageLocators.MULTISELECT_DROPDOWN_INPUT).click()
-        for _ in range(random.randint(1, 4)):
-            self.key_enter(SelectMenuPageLocators.MULTISELECT_DROPDOWN_INPUT)
-            self.simple_pause(2)
-            self.key_delete(SelectMenuPageLocators.MULTISELECT_DROPDOWN_INPUT)
-        self.find_element(SelectMenuPageLocators.CLEAR_MULTISELECT_DROPDOWN_INPUT)
+        colors = self.find_elements(SelectMenuPageLocators.ELEMENT_IN_MULTISELECT_DROPDOWN_INPUT)
+        for _ in colors:
+            random.choice(colors).click()
+            self.simple_pause(1)
 
     def fill_standart_multi_select_input(self):
         """Выбирает значение в поле Standart multi select"""
