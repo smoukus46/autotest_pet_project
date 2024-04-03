@@ -4,6 +4,7 @@ from pytest_testrail.plugin import pytestrail
 
 @pytestrail.case('C36')
 def test_upload_and_download_file(browser):
+    """Проверка работы скачивания и загрузки файла """
     upload_and_download_page = UploadAndDownloadPage(browser)
     upload_and_download_page.open_main_page()
     upload_and_download_page.click_menu_elements_button()

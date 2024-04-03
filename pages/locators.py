@@ -19,8 +19,8 @@ class TextBoxPageLocators:
     SUBMIT_BTN = (By.ID, "submit")
     NAME_OUTPUT = (By.ID, "name")
     EMAIL_OUTPUT = (By.ID, "email")
-    CURRENT_ADDRESS_OUTPUT = (By.ID, "currentAddress")
-    PERMANENT_ADDRESS_OUTPUT = (By.ID, "permanentAddress")
+    CURRENT_ADDRESS_OUTPUT = (By.CSS_SELECTOR, "p[id='currentAddress']")
+    PERMANENT_ADDRESS_OUTPUT = (By.CSS_SELECTOR, "p[id='permanentAddress']")
 
 
 class CheckBoxPageLocators:
@@ -45,7 +45,9 @@ class CheckBoxPageLocators:
 class RadioBtnPageLocators:
     RADIO_BTN_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Radio Button']")
     YES_RADIO_BTN = (By.ID, "yesRadio")
+    YES_RADIO_BTN1 = (By.XPATH, "//*[@id='app'/div/div/div/div[2]/div[2]/div[2]/label")
     IMPRESSIVE_RADIO_BTN = (By.ID, "impressiveRadio")
+    IMPRESSIVE_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]/label")
     NO_RADIO_BTN = (By.CLASS_NAME, "custom-control-input disabled")
     RESULT_TEXT = (By.CLASS_NAME, "text-success")
 

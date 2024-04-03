@@ -12,7 +12,7 @@ class PracticeFormPage(MainPage):
         self.find_element(PracticeFormPageLocators.PRACTICE_FORM_ITEM).click()
 
     def forms_menu_item_is_displayed(self):
-        return self.is_element_displayed(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
+        return self.element_is_visible(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
 
     def open_practice_tab(self):
         self.find_element(PracticeFormPageLocators.PRACTICE_FORM_ITEM).click()

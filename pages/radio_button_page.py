@@ -8,11 +8,11 @@ class RadioButtonPage(MainPage):
 
     def click_yes_radio_button(self):
         """Кликает в радиобаттон yes"""
-        self.find_element(RadioBtnPageLocators.YES_RADIO_BTN).click()
+        self.find_element(RadioBtnPageLocators.YES_RADIO_BTN1).click()
 
     def click_impressive_radio_button(self):
         """Кликает в радиобаттон Impressive"""
-        self.find_element(RadioBtnPageLocators.IMPRESSIVE_RADIO_BTN).click()
+        self.find_element(RadioBtnPageLocators.IMPRESSIVE_RADIO_BTN1).click()
 
     def no_button_is_disabled(self):
         """Проверяет кнопку No на заблокированность"""

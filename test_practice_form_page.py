@@ -35,4 +35,4 @@ def test_fill_student_form(browser):
             practice_form_page.find_element(PracticeFormPageLocators.RESULT_ADDRESS).text)
     assert "NCR Gurgaon" == practice_form_page.find_element(PracticeFormPageLocators.RESULT_STATE_AND_CITY).text
     practice_form_page.click_close_button()
-    practice_form_page.element_is_not_displayed(PracticeFormPageLocators.INFO_ABOUT_STUDENT_FORM)
+    practice_form_page.element_is_invisible(PracticeFormPageLocators.INFO_ABOUT_STUDENT_FORM)
