@@ -13,7 +13,6 @@ class UploadAndDownloadPage(MainPage):
 
     def upload_picture(self):
         """Загружает картинку на сайт"""
-        self.find_element(UploadAndDownloadPageLocators.UPLOAD_BTN).click()
         self.fill_input(UploadAndDownloadPageLocators.UPLOAD_BTN, 'D:/1.png')
 
     def upload_path_is_displayed(self):
@@ -26,5 +25,5 @@ class UploadAndDownloadPage(MainPage):
 
     def check_download_file(self):
         """Проверяет, что картинка скачалась"""
-        file_path = 'D:/1.png'
+        file_path = 'C:/Users/Nikita.Yakovlev/Downloads/sampleFile.jpeg'
         assert os.path.exists(file_path), "Файл не был скачан"
