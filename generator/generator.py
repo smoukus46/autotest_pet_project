@@ -71,3 +71,10 @@ class Date:
     month_name: str = field(default_factory=fake_en.month_name)
     day: str = field(default_factory=fake_en.day_of_month)
     time: str = field(default_factory=calculate_next_time)
+
+select_values = ["Group 1, option 1", "Group 1, option 2", "Group 2, option 1", "Group 2, option 2", "A root option", "Another root option"]
+
+@dataclass
+class SelectValues:
+    """Выбирает случайное значение из массива"""
+    select_values: str = field(default_factory=lambda: random.choice(select_values))
