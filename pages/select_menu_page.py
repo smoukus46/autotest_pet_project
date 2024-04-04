@@ -73,7 +73,8 @@ class SelectMenuPage(MainPage):
         colors = self.find_elements(SelectMenuPageLocators.ELEMENT_IN_MULTISELECT_DROPDOWN_INPUT)
         for _ in colors:
             random.choice(colors).click()
-            self.simple_pause(1)
+            colors = self.find_elements(SelectMenuPageLocators.ELEMENT_IN_MULTISELECT_DROPDOWN_INPUT)
+        self.find_element(SelectMenuPageLocators.CLEAR_MULTISELECT_DROPDOWN_INPUT).click()
 
     def fill_standart_multi_select_input(self):
         """Выбирает значение в поле Standart multi select"""
