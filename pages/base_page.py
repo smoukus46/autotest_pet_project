@@ -102,5 +102,5 @@ class BasePage:
 
     def fill_selector_by_value(self, locator, value):
         """Осуществляет заполнение селектора выбранным значением"""
-        select = Select(self.browser.find(locator))
+        select = Select(self.browser.find_element(locator))
         select.select_by_value(value)
