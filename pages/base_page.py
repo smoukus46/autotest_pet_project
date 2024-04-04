@@ -80,3 +80,9 @@ class BasePage:
         actions = ActionChains(self.browser)
         actions.move_to_element(self.find_element(locator))
         actions.perform()
+
+    def drag_and_drop_elements(self, what, where):
+        """Перетаскивает элемент"""
+        actions = ActionChains(self.browser)
+        actions.drag_and_drop(what, where)
+        actions.perform()
