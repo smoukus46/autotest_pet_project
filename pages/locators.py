@@ -25,8 +25,8 @@ class TextBoxPageLocators:
 
 class CheckBoxPageLocators:
     CHECKBOX_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Check Box']")
-    EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-expand-all")
-    COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-collapse-all")
+    EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option.rct-option-expand-all")
+    COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option.rct-option-collapse-all")
     EXPAND_HOME_BTN = (By.XPATH, "//li[@class='rct-node rct-node-parent rct-node-collapsed']//button")
     EXPAND_DESKTOP_BTN = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/span/button")
     DESKTOP_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Desktop']")
@@ -40,6 +40,7 @@ class CheckBoxPageLocators:
     NOTES_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/ol/li[1]/span/label/span[1]")
     HOME_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/span/label/span[1]")
     RESULT_BOX = (By.ID, "result")
+    SPAN_ELEMENTS = (By.CLASS_NAME, "text-success")
 
 
 class RadioBtnPageLocators:
