@@ -4,6 +4,7 @@ from pytest_testrail.plugin import pytestrail
 
 @pytestrail.case('C25')
 def test_adding_info_in_web_table(browser):
+    """Проверка возможности добавления записи на форме 'Web Tables'"""
     web_tables_page = WebTablesPage(browser)
     web_tables_page.open_main_page()
     web_tables_page.click_menu_elements_button()
@@ -18,6 +19,7 @@ def test_adding_info_in_web_table(browser):
 
 @pytestrail.case('C26')
 def test_editing_note_in_web_table(browser):
+    """Проверка возможности редактирования записи на форме 'Web Tables'"""
     web_tables_page = WebTablesPage(browser)
     web_tables_page.open_main_page()
     web_tables_page.click_menu_elements_button()

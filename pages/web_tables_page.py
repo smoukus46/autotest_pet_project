@@ -28,18 +28,10 @@ class WebTablesPage(MainPage):
         self.find_element(WebTablesPageLocators.SUBMIT_BTN).click()
 
     def check_added_result(self):
-        row_info = []
-        added_row = self.find_element(WebTablesPageLocators.USER_ADD_ROW)
-        row_elements = added_row.find_elements_by_tag_name('div')
+        added_row = self.find_elements(WebTablesPageLocators.USER_ADD_ROW)
 
-        for element in row_elements:
-            row_info.append(element.text)
-            print(element.text)
-        print(row_info)
-
-        for info in adding_info:
-            assert info in row_info
-            print(info)
+        for element in added_row[:-1]:
+            assert element.text in adding_info
 
     def open_edit_form(self):
         self.find_element(WebTablesPageLocators.EDIT_BTN_ONE).click()
@@ -49,11 +41,8 @@ class WebTablesPage(MainPage):
         self.find_element(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
 
     def check_editing_row(self):
-        row_info = []
-        row = self.find_element(WebTablesPageLocators.FIRST_ROW)
-        row_elements = row.find_elements_by_tag_name('div')
+        row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
 
-        for element in row_elements:
-            row_info.append(element.text)
-
-        assert row_info[4] == ['25000']
+        for element in row:
+            if element == row[4]:
+                assert element.text == '25000'
