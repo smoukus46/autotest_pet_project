@@ -46,3 +46,25 @@ class WebTablesPage(MainPage):
         for element in row:
             if element == row[4]:
                 assert element.text == '25000'
+
+    def delete_row(self):
+        self.find_element(WebTablesPageLocators.DELETE_BTN_ONE).click()
+
+    def fill_row_countering(self):
+        fill_row_counter = 0
+        rows = self.find_elements(WebTablesPageLocators.ALL_ROWS_LOCATOR)
+
+        for row in rows:
+            sub_rows = row.find_elements(By.CLASS_NAME, "rt-td")
+            for element in sub_rows[:-1]:
+                if element.text != ' ':
+                    fill_row_counter += 1
+                else:
+                    break
+        return fill_row_counter
+
+    def check_deleting(self):
+        row_before_delete = self.fill_row_countering()
+        self.delete_row()
+        row_after_delete = self.fill_row_countering()
+        assert row_before_delete != row_after_delete

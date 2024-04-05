@@ -68,7 +68,11 @@ class WebTablesPageLocators:
     NEXT_BTN = (By.CLASS_NAME, "-next")
     PREVIOUS_BTN = (By.CLASS_NAME, "-previous")
     ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")
+    ALL_ROWS_LOCATOR = (By.XPATH, "//div[@class='rt-tr-group']/div")
+    COLUMNS_LOCATOR = (By.XPATH, "//div[@class='rt-td']")
     FIRST_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[1]/div")
+    SECOND_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[1]/div")
+    THIRD_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[2]/div")
     USER_ADD_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[2]/div")
     # REGISTRATION_FORM
     FIRST_NAME_INPUT = (By.ID, "firstName")
