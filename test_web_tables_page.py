@@ -40,3 +40,17 @@ def test_deleting_note_in_web_table(browser):
     web_tables_page.elements_menu_items_is_displayed()
     web_tables_page.open_web_tables_tab()
     web_tables_page.check_deleting()
+
+
+@pytestrail.case('C28')
+def test_check_searching_in_web_table(browser):
+    """Проверка возможности поиска на форме 'Web Tables'"""
+    web_tables_page = WebTablesPage(browser)
+    web_tables_page.open_main_page()
+    web_tables_page.click_menu_elements_button()
+    web_tables_page.elements_menu_items_is_displayed()
+    web_tables_page.open_web_tables_tab()
+    web_tables_page.searching_in_table("Cierra")
+    web_tables_page.check_searching_result(["Cierra", "Vega", "39"])
+    web_tables_page.searching_in_table("Legal")
+    web_tables_page.check_searching_result(["Kierra", "Gentry", "29"])

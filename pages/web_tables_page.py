@@ -68,3 +68,18 @@ class WebTablesPage(MainPage):
         self.delete_row()
         row_after_delete = self.fill_row_countering()
         assert row_before_delete != row_after_delete
+
+    def searching_in_table(self, text_to_search: str):
+        self.fill_input(WebTablesPageLocators.SEARCH_INPUT, text_to_search)
+
+    def check_searching_result(self, string_for_comparison: list):
+        search_result = []
+        rows = self.find_elements(WebTablesPageLocators.ALL_ROWS_LOCATOR)
+
+        for row in rows:
+            sub_rows = row.find_elements(By.CLASS_NAME, "rt-td")
+            for element in sub_rows[:3]:
+                if element.text != ' ':
+                    search_result.append(element.text)
+            assert search_result in string_for_comparison, "Выведенные данные не соответствуют поисковому запросу"
+
