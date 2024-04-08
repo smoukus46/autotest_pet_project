@@ -65,6 +65,7 @@ class WebTablesPageLocators:
     DELETE_BTN_TWO = (By.ID, "delete-record-2")
     EDIT_BTN_THREE = (By.ID, "edit-record-3")
     DELETE_BTN_THREE = (By.ID, "delete-record-3")
+    PAGE_INPUT = (By.XPATH, "//div[@class='-pageJump']/input")
     NEXT_BTN = (By.CLASS_NAME, "-next")
     PREVIOUS_BTN = (By.CLASS_NAME, "-previous")
     ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")

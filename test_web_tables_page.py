@@ -54,3 +54,22 @@ def test_check_searching_in_web_table(browser):
     web_tables_page.check_searching_result(["Cierra", "Vega", "39"])
     web_tables_page.searching_in_table("Legal")
     web_tables_page.check_searching_result(["Kierra", "Gentry", "29"])
+
+
+@pytestrail.case('C29')
+def test_check_pagination_in_web_table(browser):
+    """Проверка работы пагинации реестра на форме 'Web Tables'"""
+    web_tables_page = WebTablesPage(browser)
+    web_tables_page.open_main_page()
+    web_tables_page.click_menu_elements_button()
+    web_tables_page.elements_menu_items_is_displayed()
+    web_tables_page.open_web_tables_tab()
+    web_tables_page.create_ten_records()
+    web_tables_page.fill_page_input("2")
+    web_tables_page.check_first_row_on_second_page()
+    web_tables_page.fill_page_input("1")
+    web_tables_page.check_first_row_on_first_page()
+    web_tables_page.click_next_btn()
+    web_tables_page.check_first_row_on_second_page()
+    web_tables_page.click_prev_btn()
+    web_tables_page.check_first_row_on_first_page()
