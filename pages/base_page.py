@@ -108,3 +108,9 @@ class BasePage:
         """Осуществляет заполнение селектора выбранным значением"""
         select = Select(self.browser.find_element(locator))
         select.select_by_value(value)
+
+    def switch_to_window(self, window_number: int):
+        self.browser.switch_to.window(self.browser.window_handles[window_number])
+
+    def close_window(self):
+        self.browser.close()
