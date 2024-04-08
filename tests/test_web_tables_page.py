@@ -1,4 +1,4 @@
-from .pages.web_tables_page import WebTablesPage
+from pages.web_tables_page import WebTablesPage
 from pytest_testrail.plugin import pytestrail
 
 
@@ -73,3 +73,22 @@ def test_check_pagination_in_web_table(browser):
     web_tables_page.check_first_row_on_second_page()
     web_tables_page.click_prev_btn()
     web_tables_page.check_first_row_on_first_page()
+
+
+@pytestrail.case('C30')
+def test_check_sorting_in_web_table(browser):
+    """Проверка сортировки колонок реестра на форме 'Web Tables'"""
+    web_tables_page = WebTablesPage(browser)
+    web_tables_page.open_main_page()
+    web_tables_page.click_menu_elements_button()
+    web_tables_page.elements_menu_items_is_displayed()
+    web_tables_page.open_web_tables_tab()
+    web_tables_page.check_sorting_result(["Cierra", "Vega", "39"])
+    web_tables_page.click_salary_column_header_btn()
+    web_tables_page.check_sorting_result(["Kierra", "Gentry", "29"])
+    web_tables_page.click_salary_column_header_btn()
+    web_tables_page.check_sorting_result(["Alden", "Cantrell", "45"])
+    web_tables_page.click_first_name_column_header_btn()
+    web_tables_page.check_sorting_result(["Alden", "Cantrell", "45"])
+    web_tables_page.click_first_name_column_header_btn()
+    web_tables_page.check_sorting_result(["Kierra", "Gentry", "29"])

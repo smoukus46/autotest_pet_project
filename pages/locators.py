@@ -71,6 +71,8 @@ class WebTablesPageLocators:
     ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")
     ALL_ROWS_LOCATOR = (By.XPATH, "//div[@class='rt-tr-group']/div")
     COLUMNS_LOCATOR = (By.XPATH, "//div[@class='rt-td']")
+    SALARY_COLUMN_HEADER = (By.XPATH, "(//div[@class='rt-th rt-resizable-header -cursor-pointer'])[5]")
+    FIRST_NAME_COLUMN_HEADER = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]/div[1]/div[1]/div/div[1]/div[1]")
     FIRST_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[1]/div")
     SECOND_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[1]/div")
     THIRD_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[2]/div")

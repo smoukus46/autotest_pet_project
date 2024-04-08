@@ -132,3 +132,24 @@ class WebTablesPage(MainPage):
     def click_prev_btn(self):
         """Нажимает кнопку 'Previous'"""
         self.find_element(WebTablesPageLocators.PREVIOUS_BTN).click()
+
+    def click_column_header_btn(self, btn_locator):
+        """Нажимает на заголовок таблицы"""
+        self.find_element(btn_locator).click()
+
+    def click_salary_column_header_btn(self):
+        """Нажимает на заголовок таблицы 'Salary'"""
+        self.click_column_header_btn(WebTablesPageLocators.SALARY_COLUMN_HEADER)
+
+    def click_first_name_column_header_btn(self):
+        """Нажимает на заголовок таблицы 'First Name'"""
+        self.click_column_header_btn(WebTablesPageLocators.FIRST_NAME_COLUMN_HEADER)
+
+    def check_sorting_result(self, string_for_comparison: list):
+        """Проверяет результаты сортировки"""
+        sorting_result = []
+        row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
+
+        for element in row[:3]:
+            sorting_result.append(element.text)
+        assert sorting_result == string_for_comparison, "Данные строки не соответствуют ожидаемым при сортировке"
