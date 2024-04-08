@@ -70,6 +70,7 @@ class WebTablesPage(MainPage):
         assert row_before_delete != row_after_delete
 
     def searching_in_table(self, text_to_search: str):
+        self.find_element(WebTablesPageLocators.SEARCH_INPUT).clear()
         self.fill_input(WebTablesPageLocators.SEARCH_INPUT, text_to_search)
 
     def check_searching_result(self, string_for_comparison: list):
@@ -81,5 +82,5 @@ class WebTablesPage(MainPage):
             for element in sub_rows[:3]:
                 if element.text != ' ':
                     search_result.append(element.text)
-            assert search_result in string_for_comparison, "Выведенные данные не соответствуют поисковому запросу"
+            assert search_result == string_for_comparison, "Выведенные данные не соответствуют поисковому запросу"
 

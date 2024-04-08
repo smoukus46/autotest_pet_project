@@ -29,7 +29,6 @@ class BasePage:
 
     def fill_input(self, element_locator, sending_text: str):
         """Заполняет поле"""
-        self.find_element(element_locator).clear()
         self.find_element(element_locator).send_keys(sending_text)
 
     def key_enter(self, locator):
