@@ -1,5 +1,6 @@
 from .main_page import MainPage
 import time
+import requests
 from .locators import *
 
 menu_items = [LoginPageLocators.LOGIN_ITEM, LoginPageLocators.BOOK_STORE_ITEM,
@@ -26,11 +27,13 @@ class LoginPage(MainPage):
     def fill_registration_form(self):
         self.fill_input(RegisterPageLocators.FIRST_NAME_INPUT, 'Artem')
         self.fill_input(RegisterPageLocators.LAST_NAME_INPUT, 'Alenin')
-        self.fill_input(RegisterPageLocators.USER_NAME_INPUT, 'Artem.Alenin')
+        self.fill_input(RegisterPageLocators.USER_NAME_INPUT, 'Artem.Alenin3')
         self.fill_input(RegisterPageLocators.PASSWORD_INPUT, 'Artem!Alenin46')
-        self.key_tab(RegisterPageLocators.PASSWORD_INPUT)
-        self.key_enter(RegisterPageLocators.CAPTCHA_CHECKBOX)
-        time.sleep(5)
+        iframe = self.find_element(RegisterPageLocators.CAPTCHA_FRAME)
+        self.browser.switch_to.frame(iframe)
+        self.find_element(RegisterPageLocators.CAPTCHA_CHECKBOX).click()
+        time.sleep(10)
+        self.browser.switch_to.default_content()
         self.find_element(RegisterPageLocators.REGISTER_BTN).click()
 
     def check_alert(self):
