@@ -15,10 +15,16 @@ class SelectablePageLocators:
     GRID_TAB_BUTTON = (By.XPATH, "//a[@id='demo-tab-grid']")
 
     # Элементы вкладки List
-    ELEMENTS_TAB_LIST = (By.XPATH, "//li[@class='mt-2 list-group-item list-group-item-action']")
+    ELEMENTS_TAB_LIST = (By.CSS_SELECTOR, "ul[id='verticalListContainer'] li[class^='mt-2 list-group-item list-group-item-action']")
+
+    # Выбранные элементы вкладки List
+    ELEMENTS_TAB_LIST_ACTIVE = (By.CSS_SELECTOR, "ul[id='verticalListContainer'] li[class^='mt-2 list-group-item active list-group-item-action']")
 
     # Элементы вкладки Grid
-    ELEMENTS_TAB_GRID = (By.XPATH, "//li[@class='list-group-item list-group-item-action']")
+    ELEMENTS_TAB_GRID = (By.CSS_SELECTOR, "div[id='gridContainer'] li[class^='list-group-item list-group-item-action']")
+
+    # Выбранные элементы вкладки Grid
+    ELEMENTS_TAB_GRID_ACTIVE = (By.CSS_SELECTOR, "div[id='gridContainer'] li[class^='list-group-item active list-group-item-action']")
 
 class SelectablePage(MainPage):
 
@@ -31,8 +37,25 @@ class SelectablePage(MainPage):
         items_list = self.find_elements(locator)
         return [item.text for item in items_list]
 
-    def select_random_element(self):
+    def select_random_element_list(self):
         """Выбирает элементы на вкладке List"""
-        item_list = random.sample(self.find_elements(SelectablePageLocators.ELEMENTS_TAB_LIST), k=random.randint(4, 7))
+        no_active_elements = self.get_selectable_items(SelectablePageLocators.ELEMENTS_TAB_LIST)
+        item_list = random.sample(self.find_elements(SelectablePageLocators.ELEMENTS_TAB_LIST), k=random.randint(1, 4))
         for item in item_list:
-            self.find_element(item).click()
+            item.click()
+        active_elements = self.get_selectable_items(SelectablePageLocators.ELEMENTS_TAB_LIST_ACTIVE)
+        print(no_active_elements)
+        print(active_elements)
+        return no_active_elements, active_elements
+
+    def select_random_element_grid(self):
+        """Выбирает элементы на вкладке List"""
+        self.find_element(SelectablePageLocators.GRID_TAB_BUTTON).click()
+        no_active_elements = self.get_selectable_items(SelectablePageLocators.ELEMENTS_TAB_GRID)
+        item_list = random.sample(self.find_elements(SelectablePageLocators.ELEMENTS_TAB_GRID), k=random.randint(1, 9))
+        for item in item_list:
+            item.click()
+        active_elements = self.get_selectable_items(SelectablePageLocators.ELEMENTS_TAB_GRID_ACTIVE)
+        print(no_active_elements)
+        print(active_elements)
+        return no_active_elements, active_elements
