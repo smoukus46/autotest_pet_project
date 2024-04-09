@@ -58,7 +58,7 @@ class LinksPage(MainPage):
     def check_link_status(self, link_locator, link_path: str, link_status_code: int):
         """Проверяет совпадение получаемого статус-кода с ожидаемым"""
         link = 'https://demoqa.com/'
-        request = requests.get(f"{link}{link_path}")
+        request = requests.get(link + link_path)
         if request.status_code != link_status_code:
             self.find_element(link_locator).click()
         else:

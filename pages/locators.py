@@ -112,6 +112,10 @@ class LinksPageLocators:
 
 class BrokenLinksPageLocators:
     BROKEN_LINKS_ITEM = (By.XPATH, "//li[@id='item-6']/span[text()='Broken Links - Images']")
+    VALID_LINK = (By.XPATH, "//div[2]/a[1]")
+    BROKEN_LINK = (By.XPATH, "//div[2]/a[2]")
+    IMG_LINK = (By.XPATH, "//div[2]/img[1]")
+    BROKEN_IMG_LINK = (By.XPATH, "//div[2]/img[2]")
 
 
 class UploadAndDownloadPageLocators:
