@@ -402,7 +402,9 @@ class RegisterPageLocators:
     LAST_NAME_INPUT = (By.ID, "lastname")
     USER_NAME_INPUT = (By.ID, "userName")
     PASSWORD_INPUT = (By.ID, "password")
-    CAPTCHA_CHECKBOX = (By.ID, "recaptcha-anchor")
+    CAPTCHA_FRAME = (By.ID, "rc-anchor-container")
+    CAPTCHA_CHECKBOX = (By.ID, "recaptcha-token")
     REGISTER_BTN = (By.ID, "register")
+    BACK_TO_LOGIN_BTN = (By.ID, "gotologin")
     LOGOUT_BTN = (By.XPATH, "//button[text()='Log out']")
     

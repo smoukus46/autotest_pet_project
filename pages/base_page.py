@@ -43,6 +43,10 @@ class BasePage:
         """Нажимает клавишу DELETE"""
         return self.find_element(locator).send_keys(Keys.BACKSPACE)
 
+    def key_tab(self, locator):
+        """Нажимает клавишу DELETE"""
+        return self.find_element(locator).send_keys(Keys.TAB)
+
     def select_value_text(self, locator, value):
         """Выбирает значение из тега select по видимому тексту"""
         select = Select(self.find_element(locator))
