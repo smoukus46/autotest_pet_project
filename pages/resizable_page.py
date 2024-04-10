@@ -9,8 +9,14 @@ class ResizablePageLocators:
     # Кнопка Resizable в выпадающем списке Widgets
     RESIZABLE_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Resizable']")
 
+    # Контейнер первого растягиваемого поля
+    RESIZABLE_BOX = (By.CSS_SELECTOR, "div[id='resizableBoxWithRestriction']")
+
     # Ползунок растягивания первого поля
     FIRST_SLIDER = (By.CSS_SELECTOR, "div[id='resizableBoxWithRestriction'] span")
+
+    # Контейнер второго растягиваемого поля
+    RESIZABLE = (By.CSS_SELECTOR, "div[id='resizable']")
 
     # Ползунок растягивания второго поля
     SECOND_SLIDER = (By.CSS_SELECTOR, "div[id='resizable'] span")
@@ -23,4 +29,4 @@ class ResizablePage(MainPage):
     
     def field_slide_max(self):
         """Растягивает поле на максимум"""
-        self.element_stretching(ResizablePageLocators.FIRST_SLIDER, 300, 500)
+        self.element_stretching((self.find_element(ResizablePageLocators.FIRST_SLIDER)), 300, 500)

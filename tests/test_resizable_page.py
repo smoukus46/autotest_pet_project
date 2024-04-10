@@ -9,3 +9,4 @@ def test_resizable(browser):
     test_resizable.click_button_page('interactions_page')
     test_resizable.click_resizable_button()
     test_resizable.field_slide_max()
+    test_resizable.simple_pause(3)
