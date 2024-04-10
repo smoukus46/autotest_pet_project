@@ -1,0 +1,35 @@
+from .main_page import MainPage
+from .locators import *
+
+
+class BrowserWindowsPage(MainPage):
+    def __init__(self, browser):
+        super().__init__(browser)
+
+    def open_browser_windows_tab(self):
+        self.find_element(BrowserWindowsPageLocators.BROWSER_WINDOWS_ITEM).click()
+
+    def click_new_tab_button(self):
+        self.find_element(BrowserWindowsPageLocators.NEW_TAB_BTN).click()
+
+    def new_window_is_displayed(self, window_number):
+        self.switch_to_window(window_number)
+        new_tab = self.find_element(BrowserWindowsPageLocators.NEW_TAB_WINDOW_TEXT)
+        assert new_tab.text == "This is a sample page", "Текст не соответствует ожидаемому"
+        self.close_window()
+        self.switch_to_window(0)
+
+    def click_new_window_button(self):
+        self.find_element(BrowserWindowsPageLocators.NEW_WINDOW_BTN).click()
+
+    def click_new_window_message(self):
+        self.find_element(BrowserWindowsPageLocators.NEW_WINDOW_MESSAGE).click()
+
+    def about_blank_window_is_displayed(self):
+        self.browser.execute_script("window.open('about:blank', 'new_window')")
+        new_window = self.browser.window_handles[-1]
+        self.browser.switch_to.window(new_window)
+        about_blank_window = self.find_element(BrowserWindowsPageLocators.NEW_WINDOW_MESSAGE_TEXT)
+        assert about_blank_window.text == "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.", "Текст не соответствует ожидаемому"
+        self.close_window()
+        self.switch_to_window(0)

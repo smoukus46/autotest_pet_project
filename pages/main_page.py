@@ -30,6 +30,8 @@ menu_items = [TextBoxPageLocators.TEXT_BOX_ITEM, CheckBoxPageLocators.CHECKBOX_I
               ButtonsPageLocators.BUTTONS_ITEM, LinksPageLocators.LINKS_ITEM,
               BrokenLinksPageLocators.BROKEN_LINKS_ITEM, UploadAndDownloadPageLocators.UPLOAD_AND_DOWNLOAD_ITEM,
               DynamicPropertiesPageLocators.DYNAMIC_PROPERTIES_ITEM]
+alerts_items = [BrowserWindowsPageLocators.BROWSER_WINDOWS_ITEM, AlertsPageLocators.ALERTS_ITEM,
+                ModalDialogsPageLocators.MODAL_DIALOGS_ITEM]
 
 
 class MainPage(BasePage):
@@ -54,6 +56,10 @@ class MainPage(BasePage):
     def click_button_widgets_page(self):
         """Кликает на кнопку страницы Widgets"""
         return self.find_element(MainPageLocators.BUTTON_WIDGETS).click()
+    
+    def click_alerts_page_button(self):
+        """Кликает на кнопку страницы Alerts, Frame & Windows"""
+        self.find_element(MainPageLocators.BUTTON_ALERTS_FRAME_WINDOWS).click()
 
     def click_menu_elements_button(self):
         """Кликает на кнопку страницы Elements"""
@@ -62,3 +68,7 @@ class MainPage(BasePage):
     def elements_menu_items_is_displayed(self):
         """Проверяет отображение всех разделов меню Elements"""
         return self.items_is_displayed(menu_items)
+    
+    def alerts_menu_items_is_displayed(self):
+        """Проверяет отображение всех разделов меню Alerts, Frame & Windows"""
+        return self.items_is_displayed(alerts_items)

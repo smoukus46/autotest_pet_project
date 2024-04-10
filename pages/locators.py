@@ -173,8 +173,10 @@ class PracticeFormPageLocators:
 class BrowserWindowsPageLocators:
     BROWSER_WINDOWS_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Browser Windows']")
     NEW_TAB_BTN = (By.ID, "tabButton")
+    NEW_TAB_WINDOW_TEXT = (By.ID, "sampleHeading")
     NEW_WINDOW_BTN = (By.ID, "windowButton")
     NEW_WINDOW_MESSAGE = (By.ID, "messageWindowButton")
+    NEW_WINDOW_MESSAGE_TEXT = (By.TAG_NAME, "body")
 
 
 class AlertsPageLocators:
