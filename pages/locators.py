@@ -407,4 +407,8 @@ class RegisterPageLocators:
     REGISTER_BTN = (By.ID, "register")
     BACK_TO_LOGIN_BTN = (By.ID, "gotologin")
     LOGOUT_BTN = (By.XPATH, "//button[text()='Log out']")
-    
+
+
+class ProfilePageLocators:
+    USER_NAME_LABEL = (By.ID, "userName-value")
+    LOG_OUT_BTN = (By.XPATH, "(//button[@id='submit'])[1]")
