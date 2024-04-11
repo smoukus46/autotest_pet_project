@@ -176,7 +176,7 @@ class BrowserWindowsPageLocators:
     NEW_TAB_WINDOW_TEXT = (By.ID, "sampleHeading")
     NEW_WINDOW_BTN = (By.ID, "windowButton")
     NEW_WINDOW_MESSAGE = (By.ID, "messageWindowButton")
-    NEW_WINDOW_MESSAGE_TEXT = (By.TAG_NAME, "body")
+    NEW_WINDOW_MESSAGE_TEXT = (By.XPATH, "//body")
 
 
 class AlertsPageLocators:
