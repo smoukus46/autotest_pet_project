@@ -23,10 +23,20 @@ class ResizablePageLocators:
 
 class ResizablePage(MainPage):
 
+    fields = {
+        'first': [ResizablePageLocators.RESIZABLE_BOX, ResizablePageLocators.FIRST_SLIDER],
+        'second': [ResizablePageLocators.RESIZABLE, ResizablePageLocators.SECOND_SLIDER]
+    }
+
     def click_resizable_button(self):
         """Нажимает кнопку "Selectable" в выпадающем списке Widgets"""
         return self.find_element(ResizablePageLocators.RESIZABLE_ITEM).click()
     
-    def field_slide_max(self):
+    def field_slide(self, number, box, slider, x: int, y: int):
         """Растягивает поле на максимум"""
-        self.element_stretching((self.find_element(ResizablePageLocators.FIRST_SLIDER)), 300, 500)
+        size_before = self.find_element(self.fields[number][box]).get_attribute('style')
+        self.element_stretching((self.find_element(self.fields[number][slider])), x, y)
+        size_after = self.find_element(self.fields[number][box]).get_attribute('style')
+        print(f'Размер поля до: {size_before}')
+        print(f'Размер поля после: {size_after}')
+        return size_before, size_after

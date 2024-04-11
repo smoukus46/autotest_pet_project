@@ -1,3 +1,4 @@
+import random
 from pages.resizable_page import ResizablePage
 from pytest_testrail.plugin import pytestrail
 
@@ -8,5 +9,7 @@ def test_resizable(browser):
     test_resizable.open_main_page()
     test_resizable.click_button_page('interactions_page')
     test_resizable.click_resizable_button()
-    test_resizable.field_slide_max()
-    test_resizable.simple_pause(3)
+    test_resizable.field_slide('first', 0, 1, random.randint(150, 500), random.randint(150, 300))
+    test_resizable.simple_pause(1)
+    test_resizable.field_slide('second', 0, 1, random.randint(20, 300), random.randint(20, 300))
+    test_resizable.simple_pause(1)
