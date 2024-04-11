@@ -26,9 +26,8 @@ class BrowserWindowsPage(MainPage):
         self.find_element(BrowserWindowsPageLocators.NEW_WINDOW_MESSAGE).click()
 
     def about_blank_window_is_displayed(self):
-        self.browser.execute_script("window.open('about:blank', 'new_window')")
-        new_window = self.browser.window_handles[-1]
-        self.browser.switch_to.window(new_window)
+        new_window_handle = [window for window in self.browser.window_handles if window != self.browser.current_window_handle][0]
+        self.browser.switch_to.window(new_window_handle)
         about_blank_window = self.find_element(BrowserWindowsPageLocators.NEW_WINDOW_MESSAGE_TEXT)
         assert about_blank_window.text == "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.", "Текст не соответствует ожидаемому"
         self.close_window()
