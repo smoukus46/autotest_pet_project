@@ -184,7 +184,9 @@ class AlertsPageLocators:
     ALERT_BTN = (By.ID, "alertButton")
     TIMER_ALERT_BTN = (By.ID, "timerAlertButton")
     CONFIRM_BTN = (By.ID, "confirmButton")
+    CONFIRM_RESULT = (By.ID, "confirmResult")
     PROMPT_BTN = (By.ID, "promtButton")
+    PROMPT_RESULT = (By.ID, "promptResult")
 
 
 class ModalDialogsPageLocators:
@@ -194,8 +196,10 @@ class ModalDialogsPageLocators:
     SMALL_MODAL_BTN = (By.ID, "showSmallModal")
     LARGE_MODAL_BTN = (By.ID, "showLargeModal")
     SMALL_MODAL = (By.CLASS_NAME, "modal-content")
+    SMALL_MODAL_BODY = (By.CLASS_NAME, "modal-body")
     CLOSE_SMALL_MODAL_BTN = (By.ID, "closeSmallModal")
     LARGE_MODAL = (By.CLASS_NAME, "modal-content")
+    LARGE_MODAL_BODY = (By.XPATH, "//div/p")
     CLOSE_LARGE_MODAL_BTN = (By.ID, "closeLargeModal")
 
 
