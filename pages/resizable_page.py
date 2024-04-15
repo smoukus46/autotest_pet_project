@@ -6,7 +6,7 @@ from pages.main_page import MainPage
 
 class ResizablePageLocators:
 
-    # Кнопка Resizable в выпадающем списке Widgets
+    # Кнопка Resizable в выпадающем списке Interactions
     RESIZABLE_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Resizable']")
 
     # Контейнер первого растягиваемого поля
@@ -29,14 +29,14 @@ class ResizablePage(MainPage):
     }
 
     def click_resizable_button(self):
-        """Нажимает кнопку "Selectable" в выпадающем списке Widgets"""
+        """Нажимает кнопку "Resizable" в выпадающем списке Interactions"""
         return self.find_element(ResizablePageLocators.RESIZABLE_ITEM).click()
     
-    def field_slide(self, number, box, slider, x: int, y: int):
-        """Растягивает поле на максимум"""
-        size_before = self.find_element(self.fields[number][box]).get_attribute('style')
-        self.element_stretching((self.find_element(self.fields[number][slider])), x, y)
-        size_after = self.find_element(self.fields[number][box]).get_attribute('style')
+    def field_slide(self, number, x: int, y: int):
+        """Растягивает поле"""
+        size_before = self.find_element(self.fields[number][0]).get_attribute('style')
+        self.element_stretching((self.find_element(self.fields[number][1])), x, y)
+        size_after = self.find_element(self.fields[number][0]).get_attribute('style')
         print(f'Размер поля до: {size_before}')
         print(f'Размер поля после: {size_after}')
         return size_before, size_after
