@@ -87,7 +87,7 @@ class BasePage:
         actions.drag_and_drop(what, where)
         actions.perform()
 
-    def element_stretching(self, locator, x, y):
+    def element_stretching(self, locator, x=0, y=0):
         """Удерживает левую кнопку мыши и растягивается по оси x и y"""
         actions = ActionChains(self.browser)
         actions.drag_and_drop_by_offset(locator, x, y)
