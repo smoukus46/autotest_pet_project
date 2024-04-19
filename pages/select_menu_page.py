@@ -18,7 +18,7 @@ class SelectMenuPageLocators:
     SELECT_VALUE_INPUT = (By.ID, "withOptGroup")
 
     # Значения выпадающего списка Select Value
-    ELEMENT_IN_SELECT_VALUE_INPUT = (By.XPATH, f"//div[@class=' css-yt9ioa-option' and text()='{select_value}']")
+    ELEMENT_IN_SELECT_VALUE_INPUT = (By.XPATH, "//div[@class=' css-yt9ioa-option']")
 
     # Поле Select One
     SELECT_ONE_INPUT = (By.ID, "selectOne")
@@ -55,7 +55,8 @@ class SelectMenuPage(MainPage):
     def click_and_fill_select_value_input(self):
         """Нажимает на поле Select Value и заполняет его значением"""
         self.find_element(SelectMenuPageLocators.SELECT_VALUE_INPUT).click()
-        self.find_element(SelectMenuPageLocators.ELEMENT_IN_SELECT_VALUE_INPUT).click()
+        elements = self.find_elements(SelectMenuPageLocators.ELEMENT_IN_SELECT_VALUE_INPUT)
+        elements[random.randint(0, 4)].click()
 
     def click_and_fill_select_one_input(self):
         """Нажимает на поле Select One и заполняет его значением"""

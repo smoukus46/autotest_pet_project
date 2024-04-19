@@ -1,9 +1,9 @@
 from pages.tabs_page import TabsPage
 from pytest_testrail.plugin import pytestrail
 
-@pytestrail.case('C14')
+@pytestrail.case('C17')
 def test_tabs(browser):
-    """Проверка работы ползунка"""
+    """Проверка переключения вкладок на странице"""
     test_tabs = TabsPage(browser)
     test_tabs.open_main_page()
     test_tabs.click_button_widgets_page()
