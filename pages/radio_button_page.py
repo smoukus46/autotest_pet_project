@@ -1,19 +1,23 @@
-from .base_page import BasePage
+from .main_page import MainPage
 from .locators import *
 
 
-class RadioButtonPage(BasePage):
+class RadioButtonPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
     def click_yes_radio_button(self):
-        self.button_click(RadioBtnPageLocators.YES_RADIO_BTN)
+        """Кликает в радиобаттон yes"""
+        self.find_element(RadioBtnPageLocators.YES_RADIO_BTN1).click()
 
     def click_impressive_radio_button(self):
-        self.button_click(RadioBtnPageLocators.IMPRESSIVE_RADIO_BTN)
+        """Кликает в радиобаттон Impressive"""
+        self.find_element(RadioBtnPageLocators.IMPRESSIVE_RADIO_BTN1).click()
 
-    def no_button_is_displayed(self):
-        return self.is_element_displayed(RadioBtnPageLocators.NO_RADIO_BTN)
+    def no_button_is_disabled(self):
+        """Проверяет кнопку No на заблокированность"""
+        return self.find_element(RadioBtnPageLocators.NO_RADIO_BTN1).get_attribute("disabled")
 
     def open_radio_button_tab(self):
-        self.button_click(RadioBtnPageLocators.RADIO_BTN_ITEM)
+        """Открывает вкладку radio button"""
+        self.find_element(RadioBtnPageLocators.RADIO_BTN_ITEM).click()

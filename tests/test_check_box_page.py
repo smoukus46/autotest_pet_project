@@ -1,9 +1,10 @@
-from .pages.check_box_page import CheckBoxPage
+from pages.check_box_page import CheckBoxPage
 from pytest_testrail.plugin import pytestrail
 
 
 @pytestrail.case('C23')
 def test_checkboxes(browser):
+    """Проверка корректной работы чек-боксов в деталях"""
     checkbox_page = CheckBoxPage(browser)
     checkbox_page.open_main_page()
     checkbox_page.click_menu_elements_button()

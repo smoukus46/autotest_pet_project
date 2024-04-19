@@ -1,70 +1,112 @@
-from .base_page import BasePage
+import time
+from .main_page import MainPage
 from .locators import *
+from selenium.common.exceptions import NoSuchElementException
+from generator.generator import Date
 
-hobbies = [PracticeFormPageLocators.HOBBIES_SPORTS_CHECKBOX, PracticeFormPageLocators.HOBBIES_READING_CHECKBOX]
+hobbies = [PracticeFormPageLocators.HOBBIES_SPORTS_CHECKBOX, PracticeFormPageLocators.HOBBIES_READING_CHECKBOX,
+           PracticeFormPageLocators.HOBBIES_MUSIC_CHECKBOX]
 
 
-class PracticeFormPage(BasePage):
+class PracticeFormPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
+    date_input = Date()
+    year_select_date = date_input.year_for_select_date
+    year_date_and_time = date_input.year_for_date_and_time
+    month_name = date_input.month_name
+    number_month = date_input.month_number
+    day = date_input.day
+    time = date_input.time
+
     def click_menu_forms_button(self):
-        self.button_click(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
+        """Нажимает на кнопку Forms"""
+        self.find_element(MainPageLocators.FORMS_PAGE).click()
 
     def forms_menu_item_is_displayed(self):
-        return self.is_element_displayed(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
+        """Проверяет отображение вкладок меню Forms"""
+        return self.element_is_visible(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
 
     def open_practice_tab(self):
-        self.button_click(PracticeFormPageLocators.PRACTICE_FORM_ITEM)
+        """Открывает вкладку practice form"""
+        self.find_element(PracticeFormPageLocators.PRACTICE_FORM_ITEM).click()
 
     def fill_first_name_input(self):
+        """"Заполняет поле имя"""
         self.fill_input(PracticeFormPageLocators.FIRST_NAME_INPUT, 'Ken')
 
     def fill_last_name_input(self):
+        """Заполняет поле фамилия"""
         self.fill_input(PracticeFormPageLocators.LAST_NAME_INPUT, 'Smith')
 
     def fill_email_input(self):
+        """Заполняет поле email"""
         self.fill_input(PracticeFormPageLocators.EMAIL_INPUT, 'KenSmith@test.ru')
 
     def gender_radio_click(self):
-        self.button_click(PracticeFormPageLocators.GENDER_BTN)
+        """Нажимает на кнопку выбора пола"""
+        self.find_element(PracticeFormPageLocators.GENDER_BTN).click()
 
     def fill_mobile_input(self):
+        """Заполняет поле мобильный телефон"""
         self.fill_input(PracticeFormPageLocators.MOBILE_INPUT, '8800555353')
 
-    def fill_datepicker(self):
-        self.button_click(PracticeFormPageLocators.DATE_OR_BIRTH_INPUT)
-        self.fill_selector_by_value(PracticeFormPageLocators.DATEPICKER_MONTH, '9')
-        self.fill_selector_by_value(PracticeFormPageLocators.DATEPICKER_YEAR, '1997')
-        self.find(PracticeFormPageLocators.DATEPICKER_DAY).click()
+    def set_date_item_from_list(self, elements, value):
+        """Выбирает дату"""
+        item_list = self.find_elements(elements)
+
+        for item in item_list:
+            if item.text == value:
+                item.click()
+                break
+
+    def fill_datepicker(self, month_name=month_name, year=year_select_date, day=day):
+        """Заполняет поле дата"""
+        self.find_element(PracticeFormPageLocators.DATE_OR_BIRTH_INPUT).click()
+        try:
+            self.select_value_text(PracticeFormPageLocators.DATEPICKER_MONTH, month_name)
+            self.select_value_text(PracticeFormPageLocators.DATEPICKER_YEAR, year)
+            self.set_date_item_from_list(PracticeFormPageLocators.DATEPICKER_DAY, day)
+        except NoSuchElementException:
+            print("Такого элемента нет")
 
     def fill_subjects_input(self):
+        """Заполняет поле предметы"""
         self.fill_input(PracticeFormPageLocators.SUBJECT_INPUT, 'Chemistry')
-        self.find(PracticeFormPageLocators.SUBJECT_CHEMISTRY_ITEM).click()
+        time.sleep(2)
+        self.find_element(PracticeFormPageLocators.SUBJECT_CHEMISTRY_ITEM).click()
         self.fill_input(PracticeFormPageLocators.SUBJECT_INPUT, 'Maths')
-        self.find(PracticeFormPageLocators.SUBJECT_MATHS_ITEM).click()
+        time.sleep(2)
+        self.find_element(PracticeFormPageLocators.SUBJECT_MATHS_ITEM).click()
 
     def hobbies_checkbox_click(self):
+        """Заполняет поле хобби"""
         for hobbie in hobbies:
-            self.button_click(hobbie)
+            self.find_element(hobbie).click()
 
     def upload_picture(self):
-        self.button_click(PracticeFormPageLocators.UPLOAD_PICTURE_BTN)
+        """Загружает файл"""
         self.fill_input(PracticeFormPageLocators.UPLOAD_PICTURE_BTN, 'D:/1.png')
 
     def fill_current_address_input(self):
+        """Заполняет поле адрес проживания"""
         self.fill_input(PracticeFormPageLocators.CURRENT_ADDRESS_INPUT, 'Pushkina st., house of Kolotushkin')
 
     def fill_state_selector(self):
-        self.find(PracticeFormPageLocators.STATE_INPUT).click()
-        self.find(PracticeFormPageLocators.STATE_NCR_SELECT).click()
+        """Заполняет поле штат"""
+        self.find_element(PracticeFormPageLocators.STATE_INPUT).click()
+        self.find_element(PracticeFormPageLocators.STATE_NCR_SELECT).click()
 
     def fill_city_selector(self):
-        self.find(PracticeFormPageLocators.CITY_INPUT).click()
-        self.find(PracticeFormPageLocators.CITY_GURGAON_SELECT).click()
+        """Заполняет поле город"""
+        self.find_element(PracticeFormPageLocators.CITY_INPUT).click()
+        self.find_element(PracticeFormPageLocators.CITY_GURGAON_SELECT).click()
 
     def click_submit_button(self):
-        self.button_click(PracticeFormPageLocators.SUBMIT_BTN)
+        """Нажимает на кнопку Submit"""
+        self.find_element(PracticeFormPageLocators.SUBMIT_BTN).click()
 
     def click_close_button(self):
-        self.button_click(PracticeFormPageLocators.CLOSE_BTN)
+        """Нажимает кнопку Закрыть"""
+        self.find_element(PracticeFormPageLocators.CLOSE_BTN).click()

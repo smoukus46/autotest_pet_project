@@ -19,14 +19,14 @@ class TextBoxPageLocators:
     SUBMIT_BTN = (By.ID, "submit")
     NAME_OUTPUT = (By.ID, "name")
     EMAIL_OUTPUT = (By.ID, "email")
-    CURRENT_ADDRESS_OUTPUT = (By.ID, "currentAddress")
-    PERMANENT_ADDRESS_OUTPUT = (By.ID, "permanentAddress")
+    CURRENT_ADDRESS_OUTPUT = (By.CSS_SELECTOR, "p[id='currentAddress']")
+    PERMANENT_ADDRESS_OUTPUT = (By.CSS_SELECTOR, "p[id='permanentAddress']")
 
 
 class CheckBoxPageLocators:
     CHECKBOX_ITEM = (By.XPATH, "//li[@id='item-1']/span[text()='Check Box']")
-    EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-expand-all")
-    COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option rct-option-collapse-all")
+    EXPAND_ALL_BTN = (By.CLASS_NAME, "rct-option.rct-option-expand-all")
+    COLLAPSE_ALL_BTN = (By.CLASS_NAME, "rct-option.rct-option-collapse-all")
     EXPAND_HOME_BTN = (By.XPATH, "//li[@class='rct-node rct-node-parent rct-node-collapsed']//button")
     EXPAND_DESKTOP_BTN = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/span/button")
     DESKTOP_TITLE = (By.XPATH, "//span[@class='rct-title'][text()='Desktop']")
@@ -40,13 +40,17 @@ class CheckBoxPageLocators:
     NOTES_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/ol/li[1]/ol/li[1]/span/label/span[1]")
     HOME_CHECKBOX = (By.XPATH, "//*[@id='tree-node']/ol/li/span/label/span[1]")
     RESULT_BOX = (By.ID, "result")
+    SPAN_ELEMENTS = (By.CLASS_NAME, "text-success")
 
 
 class RadioBtnPageLocators:
     RADIO_BTN_ITEM = (By.XPATH, "//li[@id='item-2']/span[text()='Radio Button']")
     YES_RADIO_BTN = (By.ID, "yesRadio")
+    YES_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[2]")
     IMPRESSIVE_RADIO_BTN = (By.ID, "impressiveRadio")
+    IMPRESSIVE_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]")
     NO_RADIO_BTN = (By.CLASS_NAME, "custom-control-input disabled")
+    NO_RADIO_BTN1 = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[4]")
     RESULT_TEXT = (By.CLASS_NAME, "text-success")
 
 
@@ -61,11 +65,18 @@ class WebTablesPageLocators:
     DELETE_BTN_TWO = (By.ID, "delete-record-2")
     EDIT_BTN_THREE = (By.ID, "edit-record-3")
     DELETE_BTN_THREE = (By.ID, "delete-record-3")
+    PAGE_INPUT = (By.XPATH, "//div[@class='-pageJump']/input")
     NEXT_BTN = (By.CLASS_NAME, "-next")
     PREVIOUS_BTN = (By.CLASS_NAME, "-previous")
     ROWS_SELECTOR = (By.XPATH, "//div[@class='-center']/span[@class='select-wrap -pageSizeOptions']/select")
-    FIRST_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[1]")
-    USER_ADD_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[1]")
+    ALL_ROWS_LOCATOR = (By.XPATH, "//div[@class='rt-tr-group']/div")
+    COLUMNS_LOCATOR = (By.XPATH, "//div[@class='rt-td']")
+    SALARY_COLUMN_HEADER = (By.XPATH, "(//div[@class='rt-th rt-resizable-header -cursor-pointer'])[5]")
+    FIRST_NAME_COLUMN_HEADER = (By.XPATH, "//*[@id='app']/div/div/div/div[2]/div[2]/div[3]/div[1]/div[1]/div/div[1]/div[1]")
+    FIRST_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[1]/div")
+    SECOND_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[1]/div")
+    THIRD_ROW = (By.XPATH, "(//div[@class='rt-tr -odd'])[2]/div")
+    USER_ADD_ROW = (By.XPATH, "(//div[@class='rt-tr -even'])[2]/div")
     # REGISTRATION_FORM
     FIRST_NAME_INPUT = (By.ID, "firstName")
     LAST_NAME_INPUT = (By.ID, "lastName")
@@ -80,7 +91,7 @@ class ButtonsPageLocators:
     BUTTONS_ITEM = (By.XPATH, "//li[@id='item-4']/span[text()='Buttons']")
     DOUBLE_CLICK_BTN = (By.ID, "doubleClickBtn")
     RIGHT_CLICK_BTN = (By.ID, "rightClickBtn")
-    CLICK_ME_BTN = (By.ID, "9ksW1")
+    CLICK_ME_BTN = (By.XPATH, "//button[text()='Click Me']")
     DOUBLE_CLICK_MESSAGE = (By.ID, "doubleClickMessage")
     RIGHT_CLICK_MESSAGE = (By.ID, "rightClickMessage")
     DYNAMIC_CLICK_MESSAGE = (By.ID, "dynamicClickMessage")
@@ -101,6 +112,10 @@ class LinksPageLocators:
 
 class BrokenLinksPageLocators:
     BROKEN_LINKS_ITEM = (By.XPATH, "//li[@id='item-6']/span[text()='Broken Links - Images']")
+    VALID_LINK = (By.XPATH, "//div[2]/a[1]")
+    BROKEN_LINK = (By.XPATH, "//div[2]/a[2]")
+    IMG_LINK = (By.XPATH, "//div[2]/img[1]")
+    BROKEN_IMG_LINK = (By.XPATH, "//div[2]/img[2]")
 
 
 class UploadAndDownloadPageLocators:
@@ -122,19 +137,18 @@ class PracticeFormPageLocators:
     FIRST_NAME_INPUT = (By.ID, "firstName")
     LAST_NAME_INPUT = (By.ID, "lastName")
     EMAIL_INPUT = (By.ID, "userEmail")
-    GENDER_BTN = (By.ID, "gender-radio-1")
+    GENDER_BTN = (By.XPATH, "//*[@id='genterWrapper']/div[2]/div[1]")
     MOBILE_INPUT = (By.ID, "userNumber")
     DATE_OR_BIRTH_INPUT = (By.ID, "dateOfBirthInput")
     DATEPICKER_MONTH = (By.CLASS_NAME, "react-datepicker__month-select")
     DATEPICKER_YEAR = (By.CLASS_NAME, "react-datepicker__year-select")
-    DATEPICKER_DAY = (By.CLASS_NAME, "react-datepicker__day react-datepicker__day--025")
-    SUBJECT_INPUT = (By.CLASS_NAME,
-                     "subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3")
-    SUBJECT_CHEMISTRY_ITEM = (By.ID, "react-select-2-option-1")
+    DATEPICKER_DAY = (By.CSS_SELECTOR, "div[class^='react-datepicker__day react-datepicker__day']")
+    SUBJECT_INPUT = (By.ID, "subjectsInput")
+    SUBJECT_CHEMISTRY_ITEM = (By.ID, "react-select-2-option-0")
     SUBJECT_MATHS_ITEM = (By.ID, "react-select-2-option-0")
-    HOBBIES_SPORTS_CHECKBOX = (By.ID, "hobbies-checkbox-1")
-    HOBBIES_READING_CHECKBOX = (By.ID, "hobbies-checkbox-2")
-    HOBBIES_MUSIC_CHECKBOX = (By.ID, "hobbies-checkbox-3")
+    HOBBIES_SPORTS_CHECKBOX = (By.XPATH, "//*[@id='hobbiesWrapper']/div[2]/div[1]")
+    HOBBIES_READING_CHECKBOX = (By.XPATH, "//*[@id='hobbiesWrapper']/div[2]/div[2]")
+    HOBBIES_MUSIC_CHECKBOX = (By.XPATH, "//*[@id='hobbiesWrapper']/div[2]/div[3]")
     UPLOAD_PICTURE_BTN = (By.ID, "uploadPicture")
     CURRENT_ADDRESS_INPUT = (By.ID, "currentAddress")
     STATE_INPUT = (By.ID, "state")
@@ -159,8 +173,10 @@ class PracticeFormPageLocators:
 class BrowserWindowsPageLocators:
     BROWSER_WINDOWS_ITEM = (By.XPATH, "//li[@id='item-0']/span[text()='Browser Windows']")
     NEW_TAB_BTN = (By.ID, "tabButton")
+    NEW_TAB_WINDOW_TEXT = (By.ID, "sampleHeading")
     NEW_WINDOW_BTN = (By.ID, "windowButton")
     NEW_WINDOW_MESSAGE = (By.ID, "messageWindowButton")
+    NEW_WINDOW_MESSAGE_TEXT = (By.XPATH, "//body")
 
 
 class AlertsPageLocators:
@@ -168,7 +184,9 @@ class AlertsPageLocators:
     ALERT_BTN = (By.ID, "alertButton")
     TIMER_ALERT_BTN = (By.ID, "timerAlertButton")
     CONFIRM_BTN = (By.ID, "confirmButton")
+    CONFIRM_RESULT = (By.ID, "confirmResult")
     PROMPT_BTN = (By.ID, "promtButton")
+    PROMPT_RESULT = (By.ID, "promptResult")
 
 
 class ModalDialogsPageLocators:
@@ -178,8 +196,10 @@ class ModalDialogsPageLocators:
     SMALL_MODAL_BTN = (By.ID, "showSmallModal")
     LARGE_MODAL_BTN = (By.ID, "showLargeModal")
     SMALL_MODAL = (By.CLASS_NAME, "modal-content")
+    SMALL_MODAL_BODY = (By.CLASS_NAME, "modal-body")
     CLOSE_SMALL_MODAL_BTN = (By.ID, "closeSmallModal")
     LARGE_MODAL = (By.CLASS_NAME, "modal-content")
+    LARGE_MODAL_BODY = (By.XPATH, "//div/p")
     CLOSE_LARGE_MODAL_BTN = (By.ID, "closeLargeModal")
 
 
@@ -388,7 +408,13 @@ class RegisterPageLocators:
     LAST_NAME_INPUT = (By.ID, "lastname")
     USER_NAME_INPUT = (By.ID, "userName")
     PASSWORD_INPUT = (By.ID, "password")
-    CAPTCHA_CHECKBOX = (By.ID, "recaptcha-anchor")
+    CAPTCHA_FRAME = (By.TAG_NAME, "iframe")
+    CAPTCHA_CHECKBOX = (By.CLASS_NAME, "recaptcha-checkbox-border")
     REGISTER_BTN = (By.ID, "register")
+    BACK_TO_LOGIN_BTN = (By.ID, "gotologin")
     LOGOUT_BTN = (By.XPATH, "//button[text()='Log out']")
-    
+
+
+class ProfilePageLocators:
+    USER_NAME_LABEL = (By.ID, "userName-value")
+    LOG_OUT_BTN = (By.XPATH, "(//button[@id='submit'])[1]")

@@ -14,17 +14,18 @@ class BasePage:
         self.browser = browser
 
     def open(self, url):
+        """Открывает страницу по переданному урлу"""
         self.browser.get(url)
 
-    def find_element(self, locator, time=20):
+    def find_element(self, locator, _time=20):
         """Ищет один элемент, подходящий по условию"""
-        element = WebDriverWait(self.browser, time).until(EC.visibility_of_element_located(locator))
+        element = WebDriverWait(self.browser, _time).until(EC.visibility_of_element_located(locator))
         self.browser.execute_script("arguments[0].scrollIntoView();", element)
         return element
     
-    def find_elements(self, locator, time=20):
+    def find_elements(self, locator, _time=20):
         """Ищет все элементы, подходящие по условию"""
-        return WebDriverWait(self.browser, time).until(EC.visibility_of_all_elements_located(locator))
+        return WebDriverWait(self.browser, _time).until(EC.visibility_of_all_elements_located(locator))
 
     def fill_input(self, element_locator, sending_text: str):
         """Заполняет поле"""
@@ -37,6 +38,14 @@ class BasePage:
     def key_delete(self, locator):
         """Нажимает клавишу DELETE"""
         return self.find_element(locator).send_keys(Keys.DELETE)
+
+    def key_backspace(self, locator):
+        """Нажимает клавишу DELETE"""
+        return self.find_element(locator).send_keys(Keys.BACKSPACE)
+
+    def key_tab(self, locator):
+        """Нажимает клавишу DELETE"""
+        return self.find_element(locator).send_keys(Keys.TAB)
 
     def select_value_text(self, locator, value):
         """Выбирает значение из тега select по видимому тексту"""
@@ -75,11 +84,40 @@ class BasePage:
         except TimeoutException:
             return False
 
+    def element_is_invisible(self, locator):
+        """Метод проверяет отсутствует ли элемент на экране"""
+        try:
+            self.find_element(locator)
+        except TimeoutException:
+            return False
+        return True
+
     def hovering_mouse_an_item(self, locator):
         """Перемещает курсор мыши на элемент"""
         actions = ActionChains(self.browser)
         actions.move_to_element(self.find_element(locator))
         actions.perform()
+
+    def items_is_displayed(self, items):
+        """Проверяет отображение нескольких элементов на странице"""
+        for item in items:
+            return self.element_is_visible(item)
+
+    def items_is_not_displayed(self, items):
+        """Проверяет отсутствие нескольких элементов на странице"""
+        for item in items:
+            return self.element_is_invisible(item)
+
+    def fill_selector_by_value(self, locator, value):
+        """Осуществляет заполнение селектора выбранным значением"""
+        select = Select(self.browser.find_element(locator))
+        select.select_by_value(value)
+
+    def switch_to_window(self, window_number: int):
+        self.browser.switch_to.window(self.browser.window_handles[window_number])
+
+    def close_window(self):
+        self.browser.close()
 
     def drag_and_drop_elements(self, what, where):
         """Перетаскивает элемент"""

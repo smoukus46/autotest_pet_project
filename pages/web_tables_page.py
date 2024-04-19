@@ -1,4 +1,4 @@
-from .base_page import BasePage
+from .main_page import MainPage
 from .locators import *
 
 registration_form_inputs = [WebTablesPageLocators.FIRST_NAME_INPUT, WebTablesPageLocators.LAST_NAME_INPUT,
@@ -7,53 +7,149 @@ registration_form_inputs = [WebTablesPageLocators.FIRST_NAME_INPUT, WebTablesPag
 adding_info = ['Artem', 'Alenin', 'Artem.Alenin@test.ru', '24', '2000', 'DPR']
 
 
-class WebTablesPage(BasePage):
+class WebTablesPage(MainPage):
     def __init__(self, browser):
         super().__init__(browser)
 
     def open_web_tables_tab(self):
-        self.button_click(WebTablesPageLocators.WEB_TABLES_ITEM)
+        """Открывает вкладку 'Web Tables'"""
+        self.find_element(WebTablesPageLocators.WEB_TABLES_ITEM).click()
 
     def click_add_button(self):
-        self.button_click(WebTablesPageLocators.ADD_BTN)
+        """Нажимает кнопку 'Добавить'"""
+        self.find_element(WebTablesPageLocators.ADD_BTN).click()
 
     def registration_form_items_is_displayed(self):
+        """Проверяет отображение полей с формы регистрации"""
         self.items_is_displayed(registration_form_inputs)
 
     def fill_registration_form(self):
+        """Заполняет форму регистрации"""
         for i in range(len(registration_form_inputs)):
             self.fill_input(registration_form_inputs[i], adding_info[i])
 
     def click_submit_button(self):
-        self.button_click(WebTablesPageLocators.SUBMIT_BTN)
+        """Нажимает кнопку 'Submit'"""
+        self.find_element(WebTablesPageLocators.SUBMIT_BTN).click()
 
     def check_added_result(self):
-        row_info = []
-        added_row = self.find(WebTablesPageLocators.USER_ADD_ROW)
-        row_elements = added_row.find_elements_by_tag_name('div')
+        """Проверяет добавленную информацию"""
+        added_row = self.find_elements(WebTablesPageLocators.USER_ADD_ROW)
 
-        for element in row_elements:
-            row_info.append(element.text)
-            print(element.text)
-        print(row_info)
-
-        for info in adding_info:
-            assert info in row_info
-            print(info)
+        for element in added_row[:-1]:
+            assert element.text in adding_info, "Текст столбца не совпадает с проверяемым"
 
     def open_edit_form(self):
-        self.button_click(WebTablesPageLocators.EDIT_BTN_ONE)
+        """Открывает форму редактирования"""
+        self.find_element(WebTablesPageLocators.EDIT_BTN_ONE).click()
 
     def fill_salary_input(self):
-        self.find(WebTablesPageLocators.SALARY_INPUT).clear()
-        self.find(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
+        """Заполнение поля 'Зарплата'"""
+        self.find_element(WebTablesPageLocators.SALARY_INPUT).clear()
+        self.find_element(WebTablesPageLocators.SALARY_INPUT).send_keys('25000')
 
     def check_editing_row(self):
-        row_info = []
-        row = self.find(WebTablesPageLocators.FIRST_ROW)
-        row_elements = row.find_elements_by_tag_name('div')
+        """Проверяет строку после редактирования"""
+        row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
 
-        for element in row_elements:
-            row_info.append(element.text)
+        for element in row:
+            if element == row[4]:
+                assert element.text == '25000', "Зарплата не равна 25 000"
 
-        assert row_info[4] == ['25000']
+    def delete_row(self):
+        """Удаляет строку"""
+        self.find_element(WebTablesPageLocators.DELETE_BTN_ONE).click()
+
+    def fill_row_countering(self):
+        """Считает количество непустых строк в таблице"""
+        fill_row_counter = 0
+        rows = self.find_elements(WebTablesPageLocators.ALL_ROWS_LOCATOR)
+
+        for row in rows:
+            sub_rows = row.find_elements(By.CLASS_NAME, "rt-td")
+            for element in sub_rows[:-1]:
+                if element.text != ' ':
+                    fill_row_counter += 1
+                else:
+                    break
+        return fill_row_counter
+
+    def check_deleting(self):
+        """Проверяет отсутствие удаляемой строки"""
+        row_before_delete = self.fill_row_countering()
+        self.delete_row()
+        row_after_delete = self.fill_row_countering()
+        assert row_before_delete != row_after_delete, "Количество не пустых строк совпадает"
+
+    def searching_in_table(self, text_to_search: str):
+        """Осуществляет поиск данных в таблице"""
+        self.find_element(WebTablesPageLocators.SEARCH_INPUT).clear()
+        self.fill_input(WebTablesPageLocators.SEARCH_INPUT, text_to_search)
+
+    def check_searching_result(self, string_for_comparison: list):
+        """Проверяет результаты поиска"""
+        search_result = []
+        rows = self.find_elements(WebTablesPageLocators.ALL_ROWS_LOCATOR)
+
+        for row in rows:
+            sub_rows = row.find_elements(By.CLASS_NAME, "rt-td")
+            for element in sub_rows[:3]:
+                if element.text != ' ':
+                    search_result.append(element.text)
+            assert search_result == string_for_comparison, "Выведенные данные не соответствуют поисковому запросу"
+
+    def create_ten_records(self):
+        """Создает 10 записей в таблице"""
+        for _ in range(11):
+            self.click_add_button()
+            self.fill_registration_form()
+            self.click_submit_button()
+
+    def fill_page_input(self, page: str):
+        """Заполняет поле с номером страницы"""
+        self.key_backspace(WebTablesPageLocators.PAGE_INPUT)
+        self.fill_input(WebTablesPageLocators.PAGE_INPUT, page)
+        self.key_enter(WebTablesPageLocators.PAGE_INPUT)
+
+    def check_first_row_on_first_page(self):
+        """Проверяет первую строку, отображаемую на первой странице"""
+        added_row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
+
+        for element in added_row[:-1]:
+            assert element.text not in adding_info, "Текст столбца не совпадает с проверяемым"
+
+    def check_first_row_on_second_page(self):
+        """Проверяет первую строку, отображаемую на второй странице"""
+        added_row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
+
+        for element in added_row[:-1]:
+            assert element.text in adding_info, "Текст столбца не совпадает с проверяемым"
+
+    def click_next_btn(self):
+        """Нажимает кнопку 'Next'"""
+        self.find_element(WebTablesPageLocators.NEXT_BTN).click()
+
+    def click_prev_btn(self):
+        """Нажимает кнопку 'Previous'"""
+        self.find_element(WebTablesPageLocators.PREVIOUS_BTN).click()
+
+    def click_column_header_btn(self, btn_locator):
+        """Нажимает на заголовок таблицы"""
+        self.find_element(btn_locator).click()
+
+    def click_salary_column_header_btn(self):
+        """Нажимает на заголовок таблицы 'Salary'"""
+        self.click_column_header_btn(WebTablesPageLocators.SALARY_COLUMN_HEADER)
+
+    def click_first_name_column_header_btn(self):
+        """Нажимает на заголовок таблицы 'First Name'"""
+        self.click_column_header_btn(WebTablesPageLocators.FIRST_NAME_COLUMN_HEADER)
+
+    def check_sorting_result(self, string_for_comparison: list):
+        """Проверяет результаты сортировки"""
+        sorting_result = []
+        row = self.find_elements(WebTablesPageLocators.FIRST_ROW)
+
+        for element in row[:3]:
+            sorting_result.append(element.text)
+        assert sorting_result == string_for_comparison, "Данные строки не соответствуют ожидаемым при сортировке"
