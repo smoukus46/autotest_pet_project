@@ -2,11 +2,12 @@ from pages.menu_page import MenuPage
 from pytest_testrail.plugin import pytestrail
 
 @pytestrail.case('C19')
-def test_tool_tips(browser):
+def test_menu(browser):
     """Проверка отображения меню"""
-    test_tool_tips = MenuPage(browser)
-    test_tool_tips.open_main_page()
-    test_tool_tips.click_button_widgets_page()
-    test_tool_tips.click_menu_button()
-    test_tool_tips.check_elements_in_menu()
-    test_tool_tips.check_elements_in_sub_menu()
+    test_menu = MenuPage(browser)
+    test_menu.open_main_page()
+    test_menu.click_button_page('widgets_page')
+    test_menu.click_menu_button()
+    test_menu.check_first_main_item()
+    test_menu.check_second_main_item()
+    test_menu.check_third_main_item()
