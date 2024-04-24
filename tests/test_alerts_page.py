@@ -12,6 +12,6 @@ def test_check_alerts(browser):
     alerts_page.alerts_menu_items_is_displayed()
     alerts_page.open_alerts_tab()
     alerts_page.check_alert_is_visible(AlertsPageLocators.ALERT_BTN, 0, 'You clicked a button')
-    alerts_page.check_alert_is_visible(AlertsPageLocators.TIMER_ALERT_BTN, 5, 'This alert appeared after 5 seconds')
+    alerts_page.check_alert_is_visible(AlertsPageLocators.TIMER_ALERT_BTN, 6, 'This alert appeared after 5 seconds')
     alerts_page.check_confirm_alert()
     alerts_page.check_propmt_alert('Artem')
